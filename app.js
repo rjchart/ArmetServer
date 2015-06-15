@@ -5,14 +5,29 @@ var express = require('express');
 // 서버를 생성합니다.
 var app = express();
 
+app.use(express.cookieParser());
 app.use(app.router);
-// 그림 읽어들임 관련 함수
-app.use (express.static(__dirname + '/public'));
 
-app.get('/page/:id', function (request, response) {
-	var name = request.param('id');
-	response.send('<h1>' + name + ' Page</h1>');
+// 그림 읽어들임 관련 함수
+// app.use (express.static(__dirname + '/public'));
+
+app.get('/getCookie', function (request, response) {
+	// 응답합니다.
+	response.send(request.cookies);
+
+	// var name = request.param('id');
+	// response.send('<h1>' + name + ' Page</h1>');
 });
+
+app.get('/SetCookie', function(request, response) {
+	response.cookie('string', 'cookie');
+	response.cookie('json', {
+		name: 'cookie',
+		property: 'delicious'
+	});
+
+	response.redirect('/getCookie');
+})
 
 
 // 미들웨어를 생성합니다.
