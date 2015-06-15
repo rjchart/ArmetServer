@@ -9,12 +9,9 @@ app.use(app.router);
 // 그림 읽어들임 관련 함수
 app.use (express.static(__dirname + '/public'));
 
-app.get('/a', function (request, response) {
-	response.send('<a href="/b">Go to B</a>');
-});
-
-app.get('/b', function (request, response) {
-	response.send('<a href="/a">Go to A</a>');
+app.get('/page/:id', function (request, response) {
+	var name = request.param('id');
+	response.send('<h1>' + name + ' Page</h1>');
 });
 
 
