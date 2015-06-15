@@ -32,7 +32,7 @@ app.use('/', function (req, res, next) {
 	// 요청 매개 변수 출력
 	var name = req.param('name');
 	var region = req.param('region');
-	res.send('<h1>' + name + '-' + region + '</h1>');
+	res.send('<h1>' + name + '-' + region + '!!</h1>');
 
 });
 
