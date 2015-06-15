@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 // app.use(express.logger());
-// app.use ('/', express.static(__dirname + '/public'));
+app.use (express.static(__dirname + 'public'));
 
 // 미들웨어를 생성합니다.
 app.use('/', function (req, res, next) {
