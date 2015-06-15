@@ -1,6 +1,6 @@
 {
-  "name": "ArmetServer",
-  "version": "0.0.0",
+  "name": "armet",
+  "version": "1.0.0",
   "description": "test for armet server",
   "main": "app.js",
   "scripts": {
@@ -11,11 +11,12 @@
   "bugs": {
     "url": "https://github.com/rjchart/ArmetServer/issues"
   },
+  "engines": {"node" : "0.10.26"},
   "repository": {
     "type": "git",
     "url": "https://github.com/rjchart/ArmetServer"
   },
   "dependencies": {
-    "express": ">=2.5.8"
+    "express": "*"
   }
 }
