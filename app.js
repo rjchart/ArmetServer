@@ -7,9 +7,9 @@ var app = express();
 
 
 // 미들웨어를 생성합니다.
-// app.use('/', function (req, res, next) {
-// 	// 기본적인 기능 테스트
-// 	res.send('Hello Node.js and Express test static !' + __dirname);
+app.use(function (req, res, next) {
+	// 기본적인 기능 테스트
+	res.send('Hello Node.js and Express test static !' + __dirname);
 // 	next();
 // 	// 출력 테스트
 // 	// var output = [];
@@ -35,10 +35,10 @@ var app = express();
 // 	// var name = req.param('name');
 // 	// var region = req.param('region');
 // 	// res.send('<h1>' + name + '-' + region + '!!</h1>');
-// });
+});
 
 // app.use(express.logger());
-app.use ('/', express.static(__dirname + '/public'));
+// app.use (express.static(__dirname + '/public'));
 
 
 console.log("Web application opened");
