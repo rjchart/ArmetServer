@@ -4,7 +4,7 @@ var app = express();
 app.get('/', function (req, res) {
 	// res.send('Hello Node.js and Express!');
 	var output = [];
-	for (var i = 0; i < 4; i++) {
+	for (var i = 0; i < 3; i++) {
 		output.push({
 			count: i,
 			name: 'name - ' + i
@@ -14,4 +14,4 @@ app.get('/', function (req, res) {
 });
 
 console.log("Web application opened");
-app.listen(53327);
+app.listen(process.env.PORT);
