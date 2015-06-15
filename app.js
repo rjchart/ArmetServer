@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 			name: 'name - ' + i
 		})
 	}
-	respond.send(output);
+	res.send(output);
 });
 
 console.log("Web application opened");
