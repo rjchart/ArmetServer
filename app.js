@@ -11,7 +11,7 @@ app.use (express.static(__dirname + 'public'));
 // 미들웨어를 생성합니다.
 app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
-	res.send('Hello Node.js and Express!' + __dirname);
+	res.send('Hello Node.js and Express test static !' + __dirname);
 
 	// 출력 테스트
 	// var output = [];
