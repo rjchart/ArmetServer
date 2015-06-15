@@ -7,7 +7,7 @@ var app = express();
 
 app.use (express.static(_dirname + '/public'));
 // 미들웨어를 생성합니다.
-app.use('/', function (req, res, next) {
+// app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
 	// res.send('Hello Node.js and Express!');
 
@@ -36,7 +36,7 @@ app.use('/', function (req, res, next) {
 	// var region = req.param('region');
 	// res.send('<h1>' + name + '-' + region + '!!</h1>');
 
-});
+// });
 
 
 console.log("Web application opened");
