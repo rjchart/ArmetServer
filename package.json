@@ -1,0 +1,17 @@
+{
+  "name": "ArmetServer",
+  "version": "0.0.0",
+  "description": "test for armet server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jhrhee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjchart/ArmetServer/issues"
+  },
+  "dependencies": {
+    "express": "3.4.8"
+  }
+}
