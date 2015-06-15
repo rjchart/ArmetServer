@@ -20,14 +20,19 @@ app.get('/', function (req, res) {
 	// res.send(output);
 
 	// 요청 헤더의 속성 추출
-	var agent = req.header('User-Agent');
-	// 브라우저 구분
-	if (agent.toLowerCase().match(/safari/)) {
-		res.send('<h1>Hello Safari..! </h1>');
-	}
-	else {
-		res.send('<h1>Hello Express..! </h1>');
-	}
+	// var agent = req.header('User-Agent');
+	// // 브라우저 구분
+	// if (agent.toLowerCase().match(/safari/)) {
+	// 	res.send('<h1>Hello Safari..! </h1>');
+	// }
+	// else {
+	// 	res.send('<h1>Hello Express..! </h1>');
+	// }
+
+	// 요청 매개 변수 출력
+	var name = req.param('name');
+	var region = req.param('region');
+	res.send('<h1>' + name + '-' + region + '</h1>');
 
 });
 
