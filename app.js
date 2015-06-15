@@ -7,7 +7,7 @@ var app = express();
 
 
 // 미들웨어를 생성합니다.
-app.use(function (req, res, next) {
+app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
 	res.send('Hello Node.js and Express test static !' + __dirname);
 // 	next();
@@ -38,11 +38,10 @@ app.use(function (req, res, next) {
 });
 
 // app.use(express.logger());
-// app.use (express.static(__dirname + '/public'));
+app.use ('/static', express.static(path.join(__dirname, 'public/'));
 
 
 console.log("Web application opened");
-// app.listen(process.env.PORT);
-http.createServer(app).listen(52273,function() {
-
-})
+app.listen(process.env.PORT);
+// http.createServer(app).listen(52273,function() {
+// })
