@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 // 미들웨어를 생성합니다.
-app.get('/', function (req, res) {
+app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
 	// res.send('Hello Node.js and Express!');
 
