@@ -42,4 +42,7 @@ app.use(function (req, res, next) {
 
 
 console.log("Web application opened");
-app.listen(process.env.PORT);
+// app.listen(process.env.PORT);
+http.createServer(app).listen(52273,function() {
+
+})
