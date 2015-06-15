@@ -37,8 +37,11 @@ app.use('/', function (req, res, next) {
 // 	// res.send('<h1>' + name + '-' + region + '!!</h1>');
 });
 
+app.use('/data', function(req,res,next) {
+	res.send('you typed data path');
+});
 // app.use(express.logger());
-app.use ('/static', express.static(__dirname + '/public/'));
+// app.use ('/static', express.static(__dirname + '/public/'));
 
 
 console.log("Web application opened");
