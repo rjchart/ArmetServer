@@ -11,7 +11,11 @@
   "bugs": {
     "url": "https://github.com/rjchart/ArmetServer/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjchart/ArmetServer"
+  },
   "dependencies": {
-    "express": "3.4.8"
+    "express": ">=2.5.8"
   }
 }
