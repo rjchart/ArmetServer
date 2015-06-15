@@ -5,11 +5,21 @@ var express = require('express');
 // 서버를 생성합니다.
 var app = express();
 
-
+app.use(app.router);
+// 그림 읽어들임 관련 함수
 app.use (express.static(__dirname + '/public'));
 
+app.get('/a', function (request, response) {
+	response.send('<a href="/b">Go to B</a>');
+});
+
+app.get('/b', function (request, response) {
+	response.send('<a href="/a">Go to A</a>');
+});
+
+
 // 미들웨어를 생성합니다.
-app.use('/', function (req, res, next) {
+// app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
 	// res.send('Hello Node.js and Express test static !');
 
@@ -39,10 +49,10 @@ app.use('/', function (req, res, next) {
 	// res.send('<h1>' + name + '-' + region + '!!</h1>');
 
 	// 그림을 읽어들임
-	res.writeHead(200, { 'Content-Type': 'text/html' });
-	res.end('<img src="/Penguins.jpg" width="100%" />');
+// 	res.writeHead(200, { 'Content-Type': 'text/html' });
+// 	res.end('<img src="/Penguins.jpg" width="100%" />');
 
-});
+// });
 
 
 // app.use(express.logger());
