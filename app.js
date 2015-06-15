@@ -4,7 +4,7 @@ var app = express();
 app.get('/', function (req, res) {
 	// res.send('Hello Node.js and Express!');
 	var output = [];
-	for (var i = 0; i < 3; i++) {
+	for (var i = 0; i < 4; i++) {
 		output.push({
 			count: i,
 			name: 'name - ' + i
