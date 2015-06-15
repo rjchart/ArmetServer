@@ -1,17 +1,17 @@
 var http = require('http');
 // 모듈을 추출합니다.
-var express = require('connect');
+var express = require('express');
 
 // 서버를 생성합니다.
 var app = express();
 
 // app.use(express.logger());
-app.use ('/', express.static(__dirname + '/public'));
+// app.use ('/', express.static(__dirname + '/public'));
 
 // 미들웨어를 생성합니다.
-// app.use('/', function (req, res, next) {
+app.use('/', function (req, res, next) {
 	// 기본적인 기능 테스트
-	// res.send('Hello Node.js and Express!');
+	res.send('Hello Node.js and Express!' + __dirname);
 
 	// 출력 테스트
 	// var output = [];
@@ -37,7 +37,7 @@ app.use ('/', express.static(__dirname + '/public'));
 	// var name = req.param('name');
 	// var region = req.param('region');
 	// res.send('<h1>' + name + '-' + region + '!!</h1>');
-// });
+});
 
 
 console.log("Web application opened");
