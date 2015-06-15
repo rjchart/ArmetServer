@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/rjchart/ArmetServer/issues"
   },
-  "engines": {"node" : "0.10.26"},
+  "engines": {"node" : "*"},
   "repository": {
     "type": "git",
     "url": "https://github.com/rjchart/ArmetServer"
