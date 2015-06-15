@@ -21,11 +21,14 @@ app.get('/', function (req, res) {
 
 	// 요청 헤더의 속성 추출
 	var agent = req.header('User-Agent');
+	// 브라우저 구분
+	if (agent.toLowerCase().match(/safari/)) {
+		res.send('<h1>Hello Safari..! </h1>');
+	}
+	else {
+		res.send('<h1>Hello Express..! </h1>');
+	}
 
-	// console.log(req.headers);
-	// console.log(agent);
-
-	res.send(agent);
 });
 
 console.log("Web application opened");
