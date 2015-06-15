@@ -1,6 +1,6 @@
 var http = require('http');
 // 모듈을 추출합니다.
-var express = require('express');
+var express = require('connect');
 
 // 서버를 생성합니다.
 var app = express();
