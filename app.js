@@ -14,4 +14,4 @@ app.get('/', function (req, res) {
 });
 
 console.log("Web application opened");
-app.listen(process.env.PORT);
+app.listen(53327);
