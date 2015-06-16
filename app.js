@@ -1,33 +1,68 @@
-var http = require('http');
 // 모듈을 추출합니다.
+var fs = require('fs');
+var http = require('http');
 var express = require('express');
 
 // 서버를 생성합니다.
 var app = express();
 
 app.use(express.cookieParser());
+app.use(express.bodyParser());
 app.use(app.router);
 
 // 그림 읽어들임 관련 함수
 // app.use (express.static(__dirname + '/public'));
 
-app.get('/getCookie', function (request, response) {
-	// 응답합니다.
-	response.send(request.cookies);
-
-	// var name = request.param('id');
-	// response.send('<h1>' + name + ' Page</h1>');
+app.get('/', function(request, response) {
+	if (request.cookies.auth) {
+		response.send('<h1>Login Success</h1>');
+	}
+	else {
+		response.redirect('/login');
+	}
 });
 
-app.get('/SetCookie', function(request, response) {
-	response.cookie('string', 'cookie');
-	response.cookie('json', {
-		name: 'cookie',
-		property: 'delicious'
-	});
+app.get('/login', function(request, response) {
+	fs.readFile('login.html', function (error, data) {
+		response.send(data.toString());
+	})
+});
 
-	response.redirect('/getCookie');
-})
+app.post('/login', function(request, response) {
+	var login = request.param('login');
+	var password = request.param('password');
+
+	console.log(login, password);
+	console.log(request.body);
+
+	if (login == 'rint' && password == '1234') {
+		//로그인 성공
+		response.cookie('auth', true);
+		response.redirect('/');
+	}
+	else {
+		//로그인 실패
+		response.redirect('/login');
+	}
+});
+
+// app.get('/getCookie', function (request, response) {
+// 	// 응답합니다.
+// 	response.send(request.cookies);
+
+// 	// var name = request.param('id');
+// 	// response.send('<h1>' + name + ' Page</h1>');
+// });
+
+// app.get('/SetCookie', function(request, response) {
+// 	response.cookie('string', 'cookie');
+// 	response.cookie('json', {
+// 		name: 'cookie',
+// 		property: 'delicious'
+// 	});
+
+// 	response.redirect('/getCookie');
+// })
 
 
 // 미들웨어를 생성합니다.
