@@ -2,13 +2,15 @@
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
+var cookieParser = require('cookie-parser');
+// var limit = require('limit');
 
 // 서버를 생성합니다.
 var app = express();
 
-app.use(express.cookieParser());
+app.use(cookieParser());
 app.use(express.limit('10mb'));
-app.use(express.bodyParser({ uploadDir: __direname + 'multipart'}));
+app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
 // app.use(express.bodyParser());
 app.use(app.router);
 
@@ -29,8 +31,8 @@ app.get('/', function(request, response) {
 });
 
 app.post('/', function(request, response) {
-	console.log(request.body);
-	console.log(request.files);
+	// console.log(request.body);
+	// console.log(request.files);
 
 	response.redirect('/');
 });
