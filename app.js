@@ -35,29 +35,29 @@ app.post('/', function(request, response) {
 	response.redirect('/');
 });
 
-app.get('/login', function(request, response) {
-	fs.readFile('login.html', function (error, data) {
-		response.send(data.toString());
-	})
-});
+// app.get('/login', function(request, response) {
+// 	fs.readFile('login.html', function (error, data) {
+// 		response.send(data.toString());
+// 	})
+// });
 
-app.post('/login', function(request, response) {
-	var login = request.param('login');
-	var password = request.param('password');
+// app.post('/login', function(request, response) {
+// 	var login = request.param('login');
+// 	var password = request.param('password');
 
-	console.log(login, password);
-	console.log(request.body);
+// 	console.log(login, password);
+// 	console.log(request.body);
 
-	if (login == 'rint' && password == '1234') {
-		//로그인 성공
-		response.cookie('auth', true);
-		response.redirect('/');
-	}
-	else {
-		//로그인 실패
-		response.redirect('/login');
-	}
-});
+// 	if (login == 'rint' && password == '1234') {
+// 		//로그인 성공
+// 		response.cookie('auth', true);
+// 		response.redirect('/');
+// 	}
+// 	else {
+// 		//로그인 실패
+// 		response.redirect('/login');
+// 	}
+// });
 
 // app.get('/getCookie', function (request, response) {
 // 	// 응답합니다.
