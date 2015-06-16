@@ -7,19 +7,32 @@ var express = require('express');
 var app = express();
 
 app.use(express.cookieParser());
-app.use(express.bodyParser());
+app.use(express.limit('10mb'));
+app.use(express.bodyParser({ uploadDir: __direname + 'multipart'}));
+// app.use(express.bodyParser());
 app.use(app.router);
 
 // 그림 읽어들임 관련 함수
 // app.use (express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-	if (request.cookies.auth) {
-		response.send('<h1>Login Success</h1>');
-	}
-	else {
-		response.redirect('/login');
-	}
+	// if (request.cookies.auth) {
+	// 	response.send('<h1>Login Success</h1>');
+	// }
+	// else {
+	// 	response.redirect('/login');
+	// }
+
+	fs.readFile('HTMLPage.html', function(error, data) {
+		response.send(data.toString());
+	});
+});
+
+app.post('/', function(request, response) {
+	console.log(request.body);
+	console.log(request.files);
+
+	response.redirect('/');
 });
 
 app.get('/login', function(request, response) {
