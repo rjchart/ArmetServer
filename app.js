@@ -56,12 +56,12 @@ app.get('/upload', function (req, res) {
     );
 });
 
-app.post('/upload', function (req, res) {
-    var path = req.files.snapshot.path;
-    var bs= azure.createBlobService();
-    bs.createBlockBlobFromFile('c', 'test.png', path, function (error) { });
-    res.send("OK");
-});
+// app.post('/upload', function (req, res) {
+//     var path = req.files.snapshot.path;
+//     var bs= azure.createBlobService();
+//     bs.createBlockBlobFromFile('c', 'test.png', path, function (error) { });
+//     res.send("OK");
+// });
 
 // app.get('/login', function(request, response) {
 // 	fs.readFile('login.html', function (error, data) {
