@@ -47,6 +47,22 @@ app.post('/', function(request, response) {
 	response.redirect('/');
 });
 
+app.get('/upload', function (req, res) {
+    res.send(
+    '<form action="/upload" method="post" enctype="multipart/form-data">' +
+    '<input type="file" name="snapshot" />' +
+    '<input type="submit" value="Upload" />' +
+    '</form>'
+    );
+});
+
+app.post('/upload', function (req, res) {
+    var path = req.files.snapshot.path;
+    var bs= azure.createBlobService();
+    bs.createBlockBlobFromFile('c', 'test.png', path, function (error) { });
+    res.send("OK");
+});
+
 // app.get('/login', function(request, response) {
 // 	fs.readFile('login.html', function (error, data) {
 // 		response.send(data.toString());
