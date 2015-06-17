@@ -1,9 +1,17 @@
 // 모듈을 추출합니다.
+var azure = require('azure-storage');
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 // var limit = require('limit');
+
+var blobSvc = azure.createBlobService();
+blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel: 'blob'}, function (error, result, response) {
+	if (!error) {
+
+	}
+});
 
 // 서버를 생성합니다.
 var app = express();
