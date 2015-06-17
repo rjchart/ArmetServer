@@ -1,6 +1,6 @@
 // 모듈을 추출합니다.
-var azure = require('azure');
-// var azure = require('azure-storage');
+// var azure = require('azure');
+var azure = require('azure-storage');
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
