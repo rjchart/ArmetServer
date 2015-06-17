@@ -3,7 +3,8 @@
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
+// var bodyParser = require('body-parser');
 // var limit = require('limit');
 
 // var blobSvc = azure.createBlobService();
@@ -16,7 +17,7 @@ var cookieParser = require('cookie-parser');
 // 서버를 생성합니다.
 var app = express();
 
-app.use(cookieParser());
+app.use(express.cookieParser());
 app.use(express.limit('10mb'));
 app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
 // app.use(express.bodyParser());
