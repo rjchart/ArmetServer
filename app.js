@@ -67,7 +67,10 @@ app.post('/upload', function (req, res) {
     var blobService = azure.createBlobService(storageAccount, accessKey);
     var form = new multiparty.Form();
 
-
+	form.on('error', function(err) {
+	  console.log('Error parsing form: ' + err.stack);
+	});
+	
 	form.on ('part', function(part) {
 		// if (part.filename) {
 		// 	var size = part.byteCount - part.byteOffset;
