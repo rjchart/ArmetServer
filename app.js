@@ -91,7 +91,7 @@ app.post('/upload', function (req, res) {
     // 	res.send(util.inspect({fields: fields, files: files}));
     // });
 
-	// res.send('good');
+	res.send('good');
 });
  
 // app.get('/login', function(request, response) {
