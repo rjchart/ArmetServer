@@ -7,6 +7,8 @@ var http = require('http');
 var express = require('express');
 var util = require('util');
 
+var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
+var storageAccount = 'armet';
 // var cookieParser = require('cookie-parser');
 // var bodyParser = require('body-parser');
 // var limit = require('limit');
@@ -62,7 +64,7 @@ app.get('/upload', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-    var blobService = azure.createBlobService();
+    var blobService = azure.createBlobService(storageAccount, accessKey);
     var form = new multiparty.Form();
 
     // form.parse(req, function(err, fields, files) {
