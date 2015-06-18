@@ -56,7 +56,6 @@ app.get('/upload', function (req, res) {
     res.send(
    	'<h1>title</h1>'+
     '<form action="/upload" enctype="multipart/form-data" method="post">'+
-    '<input type="text" name="title"><br>'+
     '<input type="file" name="upload" multiple="multiple"><br>'+
     '<input type="submit" value="Upload">'+
     '</form>'
@@ -87,7 +86,34 @@ app.post('/upload', function (req, res) {
 		// } else {
 		// 	form.handlePart(part);
 		// }
-		res.send("part done");
+
+
+		if (!part.filename) {
+			// filename is not defined when this is a field and not a file 
+			res.send('got field named ' + part.name);
+			// ignore field's content 
+			part.resume();
+		}
+
+		if (part.filename) {
+			// filename is defined when this is a file 
+			count++;
+			res.send('got file named ' + part.name);
+			// ignore file's content here 
+			part.resume();
+		}
+
+		part.on('error', function(err) {
+			// decide what to do 
+			res.send('error');
+		});
+	});
+	
+	// Close emitted after form parsed 
+	form.on('close', function() {
+		console.log('Upload completed!');
+		res.setHeader('text/plain');
+		res.end('Received ' + count + ' files');
 	});
 
     // form.parse(req, function(err, fields, files) {
