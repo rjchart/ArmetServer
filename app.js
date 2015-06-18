@@ -108,12 +108,12 @@ app.post('/upload', function (req, res) {
 			res.send('error');
 		});
 	});
-	
+
 	// Close emitted after form parsed 
 	form.on('close', function() {
 		console.log('Upload completed!');
-		res.setHeader('text/plain');
-		res.end('Received ' + count + ' files');
+		// res.setHeader('text/plain');
+		res.send('Received ' + count + ' files');
 	});
 
     // form.parse(req, function(err, fields, files) {
