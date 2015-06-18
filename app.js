@@ -70,6 +70,7 @@ app.post('/upload', function (req, res) {
     // form.parse(req, function(err, fields, files) {
     //   res.send(util.inspect({fields: fields, files: files}));
     // });
+
 	form.on ('part', function(part) {
 		if (part.filename) {
 			var size = part.byteCount - part.byteOffset;
@@ -85,8 +86,8 @@ app.post('/upload', function (req, res) {
 			});
 		} else {
 			form.handlePart(part);
-			res.send("No Name");
 		}
+		res.send("part done");
 	});
 	form.parse(req);
 	// res.send('good');
