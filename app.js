@@ -8,8 +8,8 @@ var express = require('express');
 var util = require('util');
 var PORT = process.env.PORT || 27372;
 
-var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
-var storageAccount = 'armet';
+// var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
+// var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
   if (req.url === '/') {
@@ -23,7 +23,7 @@ var server = http.createServer(function(req, res) {
     );
   } else if (req.url === '/upload') {
     
-	var blobService = azure.createBlobService(storageAccount, accessKey);
+	var blobService = azure.createBlobService();
 	var form = new multiparty.Form();
     form.on('part', function(part) {
 	    if (!part.filename) return;
