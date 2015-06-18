@@ -90,7 +90,7 @@ app.post('/upload', function (req, res) {
 
 		if (!part.filename) {
 			// filename is not defined when this is a field and not a file 
-			res.send('got field named ' + part.name);
+			// res.send('got field named ' + part.name);
 			// ignore field's content 
 			part.resume();
 		}
@@ -98,7 +98,7 @@ app.post('/upload', function (req, res) {
 		if (part.filename) {
 			// filename is defined when this is a file 
 			count++;
-			res.send('got file named ' + part.name);
+			// res.send('got file named ' + part.name);
 			// ignore file's content here 
 			part.resume();
 		}
