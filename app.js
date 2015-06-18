@@ -20,11 +20,11 @@ var expiryDate = new Date(startDate);
 //   }
 // });
 
-// var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
-// var storageAccount = 'armet';
+var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
+var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
-	// var blobService = azure.createBlobService();	
+	var blobService = azure.createBlobService(accessKey, storage);	
 	// var sharedAccessPolicy = {
 	//   AccessPolicy: {
 	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
