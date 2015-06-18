@@ -1,6 +1,6 @@
 // 모듈을 추출합니다.
 // var azure = require('azure');
-var azure = require('azure-storage');
+var azure = require('azure');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var http = require('http');
@@ -25,21 +25,21 @@ var expiryDate = new Date(startDate);
 
 var server = http.createServer(function(req, res) {
 	var blobService = azure.createBlobService();	
-	var sharedAccessPolicy = {
-	  AccessPolicy: {
-	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-	    Start: startDate,
-	    Expiry: expiryDate
-	  },
-	};
+	// var sharedAccessPolicy = {
+	//   AccessPolicy: {
+	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+	//     Start: startDate,
+	//     Expiry: expiryDate
+	//   },
+	// };
 	 
-	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-	var sasUrl = blobService.getUrl(containerName, blobName, token);
+	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+	// var sasUrl = blobService.getUrl(containerName, blobName, token);
 
   if (req.url === '/') {
     res.writeHead(200, {'content-type': 'text/html'});
     res.end(
-    	'<h1>' + sasUrl + '</h1>' +
+    	// '<h1>' + sasUrl + '</h1>' +
      	'<form action="/upload" enctype="multipart/form-data" method="post">'+
       	'<input type="text" name="title"><br>'+
       	'<input type="file" name="upload"><br>'+

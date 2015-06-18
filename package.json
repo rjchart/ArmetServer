@@ -25,6 +25,7 @@
     "limit": "0.0.1",
     "azure-storage": "^0.4.5",
     "multiparty": "^4.1.2",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "azure": "^0.10.6"
   }
 }
