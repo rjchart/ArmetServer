@@ -8,29 +8,43 @@ var express = require('express');
 var util = require('util');
 var PORT = process.env.PORT || 27372;
 
+var startDate = new Date();
+var expiryDate = new Date(startDate);
 
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists('taskcontainer', {
-  publicAccessLevel: 'blob'
-}, function(error, result, response) {
-  if (!error) {
-    // if result = true, container was created.
-    // if result = false, container already existed.
-  }
-});
+// blobService.createContainerIfNotExists('taskcontainer', {
+//   publicAccessLevel: 'blob'
+// }, function(error, result, response) {
+//   if (!error) {
+//     // if result = true, container was created.
+//     // if result = false, container already existed.
+//   }
+// });
 
 // var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 // var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
+	var blobService = azure.createBlobService();	
+	var sharedAccessPolicy = {
+	  AccessPolicy: {
+	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+	    Start: startDate,
+	    Expiry: expiryDate
+	  },
+	};
+	 
+	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+	var sasUrl = blobService.getUrl(containerName, blobName, token);
+
   if (req.url === '/') {
     res.writeHead(200, {'content-type': 'text/html'});
     res.end(
-      '<form action="/upload" enctype="multipart/form-data" method="post">'+
-      '<input type="text" name="title"><br>'+
-      '<input type="file" name="upload"><br>'+
-      '<input type="submit" value="Upload">'+
-      '</form>'
+    	'<h1>' + sasUrl + '</h1>' +
+     	'<form action="/upload" enctype="multipart/form-data" method="post">'+
+      	'<input type="text" name="title"><br>'+
+      	'<input type="file" name="upload"><br>'+
+      	'<input type="submit" value="Upload">'+
+      	'</form>'
     );
   } else if (req.url === '/upload') {
     
