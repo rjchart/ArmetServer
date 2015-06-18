@@ -24,7 +24,7 @@ var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVm
 var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
-	var blobService = azure.createBlobService(accessKey, storage);	
+	var blobService = azure.createBlobService(storage, accessKey);
 	// var sharedAccessPolicy = {
 	//   AccessPolicy: {
 	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
