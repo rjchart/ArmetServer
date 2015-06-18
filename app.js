@@ -53,17 +53,17 @@ var server = http.createServer(function(req, res) {
 	// var blobService = azure.createBlobService();
 	var form = new multiparty.Form();
     form.on('part', function(part) {
-	 //    if (!part.filename) return;
+	    if (!part.filename) return;
 		
-		// var size = part.byteCount;
-		// var name = part.filename;
-		// var container = 'test';
+		var size = part.byteCount;
+		var name = part.filename;
+		var container = 'test';
 		
-		// blobService.createBlockBlobFromStream(container, name, part, size, function(error) {
-		// 	if (error) {
-		// 		// error handling
-		// 	}
-		// });
+		blobService.createBlockBlobFromStream(container, name, part, size, function(error) {
+			if (error) {
+				// error handling
+			}
+		});
 	});
 	form.parse(req);
 	
