@@ -59,11 +59,11 @@ var server = http.createServer(function(req, res) {
 		var name = part.filename;
 		var container = 'test';
 		
-		blobService.createBlockBlobFromStream(container, name, part, size, function(error) {
-			if (error) {
-				// error handling
-			}
-		});
+		// blobService.createBlockBlobFromStream(container, name, part, size, function(error) {
+		// 	if (error) {
+		// 		// error handling
+		// 	}
+		// });
 	});
 	form.parse(req);
 	
