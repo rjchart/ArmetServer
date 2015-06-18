@@ -68,9 +68,9 @@ app.post('/upload', function (req, res) {
     var form = new multiparty.Form();
 
 	form.on('error', function(err) {
-	  console.log('Error parsing form: ' + err.stack);
+		res.send('Error parsing form: ' + err.stack);
 	});
-	
+
 	form.on ('part', function(part) {
 		// if (part.filename) {
 		// 	var size = part.byteCount - part.byteOffset;
@@ -94,7 +94,7 @@ app.post('/upload', function (req, res) {
     // 	res.send(util.inspect({fields: fields, files: files}));
     // });
 
-	res.send('good');
+	// res.send('good');
 });
  
 // app.get('/login', function(request, response) {
