@@ -62,10 +62,10 @@ app.get('/upload', function (req, res) {
 app.post('/upload', function (req, res) {
     var form = new multiparty.Form();
 
-    // form.parse(req, function(err, fields, files) {
-    //   res.send(util.inspect({fields: fields, files: files}));
-    // });
-	res.send('good');
+    form.parse(req, function(err, fields, files) {
+      res.send(util.inspect({fields: fields, files: files}));
+    });
+	// res.send('good');
 });
  
 // app.get('/login', function(request, response) {
