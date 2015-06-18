@@ -25,16 +25,16 @@ var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
 	var blobService = azure.createBlobService(storageAccount, accessKey);
-	// var sharedAccessPolicy = {
-	//   AccessPolicy: {
-	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-	//     Start: startDate,
-	//     Expiry: expiryDate
-	//   },
-	// };
+	var sharedAccessPolicy = {
+	  AccessPolicy: {
+	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+	    Start: startDate,
+	    Expiry: expiryDate
+	  },
+	};
 	 
-	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-	// var sasUrl = blobService.getUrl(containerName, blobName, token);
+	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+	var sasUrl = blobService.getUrl(containerName, blobName, token);
 
   if (req.url === '/') {
     res.writeHead(200, {'content-type': 'text/html'});
