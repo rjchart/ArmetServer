@@ -1,6 +1,6 @@
 // 모듈을 추출합니다.
 // var azure = require('azure');
-var azure = require('azure');
+var azure = require('azure-storage');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var http = require('http');
@@ -24,7 +24,7 @@ var expiryDate = new Date(startDate);
 // var storageAccount = 'armet';
 
 var server = http.createServer(function(req, res) {
-	var blobService = azure.createBlobService();	
+	// var blobService = azure.createBlobService();	
 	// var sharedAccessPolicy = {
 	//   AccessPolicy: {
 	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
