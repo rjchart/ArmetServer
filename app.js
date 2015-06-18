@@ -69,27 +69,28 @@ app.post('/upload', function (req, res) {
 
 
 	form.on ('part', function(part) {
-		if (part.filename) {
-			var size = part.byteCount - part.byteOffset;
-			var name = part.filename;
+		// if (part.filename) {
+		// 	var size = part.byteCount - part.byteOffset;
+		// 	var name = part.filename;
 
-			blobService.createBlockBlobFromStream('test', name, part, size, function (error) {
-				if (error) {
-					res.send({ Grrr: error});
-				}
-				else {
-					res.send("OK");
-				}
-			});
-		} else {
-			form.handlePart(part);
-		}
+		// 	blobService.createBlockBlobFromStream('test', name, part, size, function (error) {
+		// 		if (error) {
+		// 			res.send({ Grrr: error});
+		// 		}
+		// 		else {
+		// 			res.send("OK");
+		// 		}
+		// 	});
+		// } else {
+		// 	form.handlePart(part);
+		// }
 		res.send("part done");
 	});
-	
-    form.parse(req, function(err, fields, files) {
-    	res.send(util.inspect({fields: fields, files: files}));
-    });
+
+    // form.parse(req, function(err, fields, files) {
+    // 	res.send(util.inspect({fields: fields, files: files}));
+    // });
+
 	// res.send('good');
 });
  
