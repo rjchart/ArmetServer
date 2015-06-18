@@ -62,11 +62,28 @@ app.get('/upload', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
+    var blobService = azure.createBlobService();
     var form = new multiparty.Form();
 
-    form.parse(req, function(err, fields, files) {
-      res.send(util.inspect({fields: fields, files: files}));
-    });
+    // form.parse(req, function(err, fields, files) {
+    //   res.send(util.inspect({fields: fields, files: files}));
+    // });
+	form.on ('part', function(part) {
+		if (part.filename) {
+			var size = part.byteCount - part.byteOffset;
+			var name = part.filename;
+
+			blobService.createBlockBlobFromStream('c', name, part, size, function (error) {
+				if (error) {
+					res.send({ Grrr: error});
+				}
+			});
+		} else {
+			form.handlePart(part);
+		}
+	});
+	form.parse(req);
+	res.send("OK");
 	// res.send('good');
 });
  
