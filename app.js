@@ -67,9 +67,6 @@ app.post('/upload', function (req, res) {
     var blobService = azure.createBlobService(storageAccount, accessKey);
     var form = new multiparty.Form();
 
-    // form.parse(req, function(err, fields, files) {
-    //   res.send(util.inspect({fields: fields, files: files}));
-    // });
 
 	form.on ('part', function(part) {
 		if (part.filename) {
@@ -89,8 +86,11 @@ app.post('/upload', function (req, res) {
 		}
 		res.send("part done");
 	});
-	form.parse(req);
-	// res.send('good');
+	
+    form.parse(req, function(err, fields, files) {
+    	res.send(util.inspect({fields: fields, files: files}));
+    });
+	res.send('good');
 });
  
 // app.get('/login', function(request, response) {
