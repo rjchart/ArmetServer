@@ -79,13 +79,16 @@ app.post('/upload', function (req, res) {
 				if (error) {
 					res.send({ Grrr: error});
 				}
+				else {
+					res.send("OK");
+				}
 			});
 		} else {
 			form.handlePart(part);
+			res.send("No Name");
 		}
 	});
 	form.parse(req);
-	res.send("OK");
 	// res.send('good');
 });
  
