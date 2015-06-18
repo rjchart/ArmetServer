@@ -52,7 +52,7 @@ var server = http.createServer(function(req, res) {
     
 	// var blobService = azure.createBlobService();
 	var form = new multiparty.Form();
-    // form.on('part', function(part) {
+    form.on('part', function(part) {
 	 //    if (!part.filename) return;
 		
 		// var size = part.byteCount;
@@ -64,7 +64,7 @@ var server = http.createServer(function(req, res) {
 		// 		// error handling
 		// 	}
 		// });
-	// });
+	});
 	form.parse(req);
 	
     res.writeHead(200, {'content-type': 'text/html'});
