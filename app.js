@@ -66,59 +66,59 @@ app.post('/upload', function (req, res) {
     var blobService = azure.createBlobService(storageAccount, accessKey);
     var form = new multiparty.Form();
 
-	form.on('error', function(err) {
-		res.send('Error parsing form: ' + err.stack);
-	});
+	// form.on('error', function(err) {
+	// 	res.send('Error parsing form: ' + err.stack);
+	// });
 
-	form.on ('part', function(part) {
-		// if (part.filename) {
-		// 	var size = part.byteCount - part.byteOffset;
-		// 	var name = part.filename;
+	// form.on ('part', function(part) {
+	// 	// if (part.filename) {
+	// 	// 	var size = part.byteCount - part.byteOffset;
+	// 	// 	var name = part.filename;
 
-		// 	blobService.createBlockBlobFromStream('test', name, part, size, function (error) {
-		// 		if (error) {
-		// 			res.send({ Grrr: error});
-		// 		}
-		// 		else {
-		// 			res.send("OK");
-		// 		}
-		// 	});
-		// } else {
-		// 	form.handlePart(part);
-		// }
+	// 	// 	blobService.createBlockBlobFromStream('test', name, part, size, function (error) {
+	// 	// 		if (error) {
+	// 	// 			res.send({ Grrr: error});
+	// 	// 		}
+	// 	// 		else {
+	// 	// 			res.send("OK");
+	// 	// 		}
+	// 	// 	});
+	// 	// } else {
+	// 	// 	form.handlePart(part);
+	// 	// }
 
 
-		if (!part.filename) {
-			// filename is not defined when this is a field and not a file 
-			// res.send('got field named ' + part.name);
-			// ignore field's content 
-			part.resume();
-		}
+	// 	if (!part.filename) {
+	// 		// filename is not defined when this is a field and not a file 
+	// 		// res.send('got field named ' + part.name);
+	// 		// ignore field's content 
+	// 		part.resume();
+	// 	}
 
-		if (part.filename) {
-			// filename is defined when this is a file 
-			count++;
-			// res.send('got file named ' + part.name);
-			// ignore file's content here 
-			part.resume();
-		}
+	// 	if (part.filename) {
+	// 		// filename is defined when this is a file 
+	// 		count++;
+	// 		// res.send('got file named ' + part.name);
+	// 		// ignore file's content here 
+	// 		part.resume();
+	// 	}
 
-		part.on('error', function(err) {
-			// decide what to do 
-			res.send('error');
-		});
-	});
+	// 	part.on('error', function(err) {
+	// 		// decide what to do 
+	// 		res.send('error');
+	// 	});
+	// });
 
-	// Close emitted after form parsed 
-	form.on('close', function() {
-		console.log('Upload completed!');
-		// res.setHeader('text/plain');
-		res.send('Received ' + count + ' files');
-	});
+	// // Close emitted after form parsed 
+	// form.on('close', function() {
+	// 	console.log('Upload completed!');
+	// 	// res.setHeader('text/plain');
+	// 	res.send('Received ' + count + ' files');
+	// });
 
-    // form.parse(req, function(err, fields, files) {
-    // 	res.send(util.inspect({fields: fields, files: files}));
-    // });
+    form.parse(req, function(err, fields, files) {
+    	res.send(util.inspect({fields: fields, files: files}));
+    });
 
 	// res.send('good');
 });
