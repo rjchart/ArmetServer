@@ -7,6 +7,8 @@ var http = require('http');
 var express = require('express');
 var util = require('util');
 var PORT = process.env.PORT || 27372;
+var blobName = "testBlobName";
+var containerName = "test";
 
 var startDate = new Date();
 var expiryDate = new Date(startDate);
@@ -33,8 +35,8 @@ var server = http.createServer(function(req, res) {
 	  },
 	};
 	 
-	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-	// var sasUrl = blobService.getUrl(containerName, blobName, token);
+	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+	var sasUrl = blobService.getUrl(containerName, blobName, token);
 
   if (req.url === '/') {
     res.writeHead(200, {'content-type': 'text/html'});
