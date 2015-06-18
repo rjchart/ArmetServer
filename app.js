@@ -38,7 +38,7 @@ var server = http.createServer(function(req, res) {
 	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
 	var sasUrl = blobService.getUrl(containerName, blobName, token);
 
-  if (req.url == '/') {
+  if (req.url === '/') {
     res.writeHead(200, {'content-type': 'text/html'});
     res.end(
     	'<h1>' + sasUrl + '</h1>' +
@@ -48,7 +48,7 @@ var server = http.createServer(function(req, res) {
       	'<input type="submit" value="Upload">'+
       	'</form>'
     );
-  } else if (req.url == '/upload') {
+  } else if (req.url === '/upload') {
     
 	// var blobService = azure.createBlobService();
 	// var form = new multiparty.Form();
@@ -67,7 +67,8 @@ var server = http.createServer(function(req, res) {
 	// });
 	// form.parse(req);
 	
-	res.send('File uploaded successfully');
+    res.writeHead(200, {'content-type': 'text/html'});
+	res.end('<h1>File uploaded successfully</h1>');
    }
 });
 server.listen(PORT, function() {
