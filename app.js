@@ -90,7 +90,7 @@ app.post('/upload', function (req, res) {
     form.parse(req, function(err, fields, files) {
     	res.send(util.inspect({fields: fields, files: files}));
     });
-	res.send('good');
+	// res.send('good');
 });
  
 // app.get('/login', function(request, response) {
