@@ -16,9 +16,10 @@ var expiryDate = new Date(startDate);
 var app = express();
 
 app.use(express.cookieParser());
+app.use(express.session({ secret: 'secret key' }))
 // app.use(express.limit('10mb'));
 // app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
-// app.use(express.bodyParser());
+app.use(express.bodyParser());
 app.use(app.router);
 // blobService.createContainerIfNotExists('taskcontainer', {
 //   publicAccessLevel: 'blob'
@@ -40,9 +41,16 @@ app.get('/', function(request, response) {
 	// 	response.redirect('/login');
 	// }
 
-	fs.readFile('HTMLPage.html', function(error, data) {
-		response.send(data.toString());
-	});
+	// fs.readFile('HTMLPage.html', function(error, data) {
+	// 	response.send(data.toString());
+	// });
+	var output = {};
+	output.cookies = request.cookies;
+	output.session = request.session;
+
+	request.session.now = (new Date()).toUTCString();
+
+	response.send(output);
 });
 
 app.get('/upload', function (req, res) {
