@@ -13,6 +13,13 @@ var containerName = "test";
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 
+var app = express();
+
+app.use(express.cookieParser());
+// app.use(express.limit('10mb'));
+// app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
+// app.use(express.bodyParser());
+app.use(app.router);
 // blobService.createContainerIfNotExists('taskcontainer', {
 //   publicAccessLevel: 'blob'
 // }, function(error, result, response) {
@@ -25,7 +32,20 @@ var expiryDate = new Date(startDate);
 var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 var storageAccount = 'armet';
 
-var server = http.createServer(function(req, res) {
+app.get('/', function(request, response) {
+	// if (request.cookies.auth) {
+	// 	response.send('<h1>Login Success</h1>');
+	// }
+	// else {
+	// 	response.redirect('/login');
+	// }
+
+	fs.readFile('HTMLPage.html', function(error, data) {
+		response.send(data.toString());
+	});
+});
+
+app.get('/upload', function (req, res) {
 	var blobService = azure.createBlobService(storageAccount, accessKey);
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
@@ -38,9 +58,7 @@ var server = http.createServer(function(req, res) {
 	var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
 	var sasUrl = blobService.getUrl(containerName, blobName, token);
 
-  if (req.url === '/') {
-    res.writeHead(200, {'content-type': 'text/html'});
-    res.end(
+    res.send(
     	'<h1>' + sasUrl + '</h1>' +
      	'<form action="/upload" enctype="multipart/form-data" method="post">'+
       	'<input type="text" name="title"><br>'+
@@ -48,9 +66,9 @@ var server = http.createServer(function(req, res) {
       	'<input type="submit" value="Upload">'+
       	'</form>'
     );
-  } else if (req.url === '/upload') {
-    
-	// var blobService = azure.createBlobService();
+});
+
+app.post('/upload', function (req, res) {
 	var form = new multiparty.Form();
     form.on('part', function(part) {
 	    if (!part.filename) return;
@@ -67,10 +85,9 @@ var server = http.createServer(function(req, res) {
 	});
 	form.parse(req);
 	
-    res.writeHead(200, {'content-type': 'text/html'});
-	res.end('<h1>File uploaded successfully</h1>');
-   }
+    // res.writeHead(200, {'content-type': 'text/html'});
+	res.send('<h1>File uploaded successfully</h1>');
 });
-server.listen(PORT, function() {
-  console.info('listening on http://0.0.0.0:'+PORT+'/');
-});
+
+console.log("Web application opened");
+app.listen(PORT);
