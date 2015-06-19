@@ -69,6 +69,7 @@ app.get('/upload', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
+	var blobService = azure.createBlobService(storageAccount, accessKey);
 	var form = new multiparty.Form();
     form.on('part', function(part) {
 	    if (!part.filename) return;
