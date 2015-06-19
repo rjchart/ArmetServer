@@ -16,7 +16,13 @@ var expiryDate = new Date(startDate);
 var app = express();
 
 app.use(express.cookieParser());
-app.use(express.session({ secret: 'secret key' }))
+app.use(express.session({
+	secret: 'secret key',
+	key: 'rint',
+	cookie: {
+		maxAge: 60 * 1000
+	}
+}));
 // app.use(express.limit('10mb'));
 // app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
 app.use(express.bodyParser());
