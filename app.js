@@ -88,7 +88,7 @@ app.get('/', function(request, response) {
 
 	// request.session.now = (new Date()).toUTCString();
 
-	// response.send(output);
+	response.send("Hello");
 });
 
 // app.get('/user', function(request, response) {
