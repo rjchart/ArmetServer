@@ -121,9 +121,9 @@ app.post('/user', function(request, response) {
 
 app.put('/user/:id', function(request, response) {
 	// 변수를 선언합니다.
-	// var id = request.param('id');
-	// var name = request.param('name');
-	// var region = request.param('region');
+	var id = request.param('id');
+	var name = request.param('name');
+	var region = request.param('region');
 
 	// // 데이터베이스를 수정합니다.
 	// var item = DummyDB.get(id);
