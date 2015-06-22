@@ -107,10 +107,11 @@ app.post('/user', function(request, response) {
 
 	// 유효성을 검사합니다.
 	if (name && region) {
-		response.send(DummyDB.insert({
+		DummyDB.insert({
 			name: name,
 			region: region
-		}));
+		});
+		response.send(DummyDB.get());
 	}
 	else {
 		throw new Error('error');
