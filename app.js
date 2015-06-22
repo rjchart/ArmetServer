@@ -100,22 +100,22 @@ app.get('/user/:id', function(request, response) {
 });
 
 
-// app.post('/user', function(request, response) {
-// 	// 변수를 선언합니다.
-// 	var name = request.param('name');
-// 	var region = request.param('region');
+app.post('/user', function(request, response) {
+	// 변수를 선언합니다.
+	var name = request.param('name');
+	var region = request.param('region');
 
-// 	// 유효성을 검사합니다.
-// 	if (name && region) {
-// 		response.send(DummyDB.insert({
-// 			name: name,
-// 			region: region
-// 		}));
-// 	}
-// 	else {
-// 		throw new Error('error');
-// 	}
-// });
+	// 유효성을 검사합니다.
+	if (name && region) {
+		response.send(DummyDB.insert({
+			name: name,
+			region: region
+		}));
+	}
+	else {
+		throw new Error('error');
+	}
+});
 
 app.get('/upload', function (req, res) {
 	var blobService = azure.createBlobService(storageAccount, accessKey);
