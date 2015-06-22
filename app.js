@@ -91,13 +91,13 @@ app.get('/', function(request, response) {
 	response.send("Hello");
 });
 
-// app.get('/user', function(request, response) {
-// 	response.send(DummyDB.get());
-// });
+app.get('/user', function(request, response) {
+	response.send(DummyDB.get());
+});
 
-// app.get('/user/:id', function(request, response) {
-// 	response.send(DummyDB.get(request.param('id')));
-// });
+app.get('/user/:id', function(request, response) {
+	response.send(DummyDB.get(request.param('id')));
+});
 
 
 // app.post('/user', function(request, response) {
