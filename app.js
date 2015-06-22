@@ -126,8 +126,8 @@ app.put('/user/:id', function(request, response) {
 	var region = request.param('region');
 
 	// // 데이터베이스를 수정합니다.
-	// var item = DummyDB.get(id);
-	// item.name = name || item.name;
+	var item = DummyDB.get(id);
+	item.name = name || item.name;
 	// item.region = region || item.region;
 
 	// // 응답합니다.
