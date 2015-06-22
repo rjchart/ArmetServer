@@ -21,9 +21,9 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(app.router);
 
-var DummyDB = (function () {
+// var DummyDB = (function () {
 	//변수를 선언합니다.
-	var DummyDB = {};
+	// var DummyDB = {};
 	// var storage = [];
 	// var count = 1;
 
@@ -65,8 +65,8 @@ var DummyDB = (function () {
 	// };
 
 	// 리턴합니다.
-	return DummyDB;
-})();
+// 	return DummyDB;
+// })();
 
 var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 var storageAccount = 'armet';
