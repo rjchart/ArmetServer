@@ -82,13 +82,13 @@ app.get('/', function(request, response) {
 	// fs.readFile('HTMLPage.html', function(error, data) {
 	// 	response.send(data.toString());
 	// });
-	var output = {};
-	output.cookies = request.cookies;
-	output.session = request.session;
+	// var output = {};
+	// output.cookies = request.cookies;
+	// output.session = request.session;
 
-	request.session.now = (new Date()).toUTCString();
+	// request.session.now = (new Date()).toUTCString();
 
-	response.send(output);
+	// response.send(output);
 });
 
 // app.get('/user', function(request, response) {
