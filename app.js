@@ -64,7 +64,7 @@ var DummyDB = (function () {
 		return false;
 	};
 
-	리턴합니다.
+	// 리턴합니다.
 	return DummyDB;
 })();
 
