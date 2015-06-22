@@ -106,17 +106,17 @@ app.post('/user', function(request, response) {
 	var region = request.param('region');
 
 	// 유효성을 검사합니다.
-	// if (name && region) {
-	// 	response.send(DummyDB.insert({
-	// 		name: name,
-	// 		region: region
-	// 	}));
-	// }
-	// else {
-	// 	throw new Error('error');
-	// }
+	if (name && region) {
+		response.send(DummyDB.insert({
+			name: name,
+			region: region
+		}));
+	}
+	else {
+		throw new Error('error');
+	}
 
-	response.send("OK Post");
+	// response.send("OK Post");
 });
 
 app.get('/upload', function (req, res) {
