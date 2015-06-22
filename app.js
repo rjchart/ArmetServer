@@ -139,6 +139,10 @@ app.put('/user/:id', function(request, response) {
 	// response.send('put OK');
 });
 
+app.del('/user/:id', function(request, response) {
+	response.send(DummyDB.remove(request.param('id')));
+});
+
 app.get('/upload', function (req, res) {
 	var blobService = azure.createBlobService(storageAccount, accessKey);
 	var sharedAccessPolicy = {
