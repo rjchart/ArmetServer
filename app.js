@@ -16,25 +16,57 @@ var expiryDate = new Date(startDate);
 var app = express();
 
 app.use(express.cookieParser());
-app.use(express.session({
-	secret: 'secret key',
-	key: 'rint',
-	cookie: {
-		maxAge: 60 * 1000
-	}
-}));
 // app.use(express.limit('10mb'));
 // app.use(express.bodyParser({ uploadDir: __dirname + 'multipart'}));
 app.use(express.bodyParser());
 app.use(app.router);
-// blobService.createContainerIfNotExists('taskcontainer', {
-//   publicAccessLevel: 'blob'
-// }, function(error, result, response) {
-//   if (!error) {
-//     // if result = true, container was created.
-//     // if result = false, container already existed.
-//   }
-// });
+
+var DummyDB = (function () {
+	//변수를 선언합니다.
+	var DummyDB = {};
+	var storage = [];
+	var count = 1;
+
+	// 메서드를 구현합니다.
+	DummyDB.get = function (id) {
+		if (id) {
+			//변수를 가공합니다.
+			id = (typeof id == 'string') ? Number(id) : id;
+
+			//데이터를 선택합니다.
+			for (var i in storage) if (storage[i].id == id) {
+				return storage[i];
+			}
+		} else {
+			return storage;
+		}
+	};
+
+	DummyDB.insert = function (data) {
+		data.id = count++;
+		storage.push(data);
+		return data;
+	};
+
+	DummyDB.remove = function (id) {
+		// 변수를 가공합니다.
+		id = (typeof id == 'string') ? Number(id) : id;
+
+		// 제거합니다.
+		for (var i in storage) if (storage[i].id == id) {
+			// 데이터를 제거합니다.
+			storage.splice(i, 1);
+
+			// 리턴합니다; 데이터 삭제 성공
+			return true;
+		}
+
+		return false;
+	};
+
+	// 리턴합니다.
+	return DummyDB;
+})();
 
 var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 var storageAccount = 'armet';
@@ -57,6 +89,32 @@ app.get('/', function(request, response) {
 	request.session.now = (new Date()).toUTCString();
 
 	response.send(output);
+});
+
+app.get('/user', function(request, response) {
+	response.send(DummyDB.get());
+});
+
+app.get('/user/:id', function(request, response) {
+	response.send(DummyDB.get(request.param('id')));
+});
+
+
+app.post('/user', function(request, response) {
+	// 변수를 선언합니다.
+	var name = request.param('name');
+	var region = request.param('region');
+
+	// 유효성을 검사합니다.
+	if (name && region) {
+		response.send(DummyDB.insert({
+			name: name,
+			region: region
+		}));
+	}
+	else {
+		throw new Error('error');
+	}
 });
 
 app.get('/upload', function (req, res) {
