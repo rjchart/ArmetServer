@@ -1,7 +1,7 @@
 // 모듈을 추출합니다.
 // var azure = require('azure');
 var azure = require('azure-storage');
-var mssql = require('msnodesql');
+// var mssql = require('msnodesql');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var http = require('http');
@@ -10,7 +10,7 @@ var util = require('util');
 var PORT = process.env.PORT || 27372;
 var blobName = "testBlobName";
 var containerName = "test";
-var conn_str = "Driver={SQL Server Native Client 10.0};Server=tcp:gys5qn81ol.database.windows.net,1433;Database=armetDB;Uid=armet;Pwd=Pinkrocket1234;Encrypt=yes;Connection Timeout=30;";
+// var conn_str = "Driver={SQL Server Native Client 10.0};Server=tcp:gys5qn81ol.database.windows.net,1433;Database=armetDB;Uid=armet;Pwd=Pinkrocket1234;Encrypt=yes;Connection Timeout=30;";
 
 var startDate = new Date();
 var expiryDate = new Date(startDate);
