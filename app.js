@@ -165,13 +165,14 @@ app.get('/table', function (req, res) {
 	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
 	// var sasUrl = blobService.getUrl(containerName, blobName, token);
 
-    res.send(
-     	'<form action="/upload" enctype="multipart/form-data" method="post">'+
-      	'<input type="text" name="title"><br>'+
-      	'<input type="file" name="upload"><br>'+
-      	'<input type="submit" value="Upload">'+
-      	'</form>'
-    );
+	res.send("Make Table");
+    // res.send(
+    //  	'<form action="/upload" enctype="multipart/form-data" method="post">'+
+    //   	'<input type="text" name="title"><br>'+
+    //   	'<input type="file" name="upload"><br>'+
+    //   	'<input type="submit" value="Upload">'+
+    //   	'</form>'
+    // );
 });
 
 app.get('/upload', function (req, res) {
