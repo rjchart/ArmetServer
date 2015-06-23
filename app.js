@@ -168,7 +168,7 @@ app.get('/table', function (req, res) {
 	  if (!error) {
 	    // result contains the ETag for the new entity
 	  }
-	  res.send(result);
+	  console.log("etag: " + result);
 	});
 
 	// var sharedAccessPolicy = {
@@ -182,7 +182,7 @@ app.get('/table', function (req, res) {
 	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
 	// var sasUrl = blobService.getUrl(containerName, blobName, token);
 
-	// res.send("Make Table");
+	res.send("Make Table");
     // res.send(
     //  	'<form action="/upload" enctype="multipart/form-data" method="post">'+
     //   	'<input type="text" name="title"><br>'+
