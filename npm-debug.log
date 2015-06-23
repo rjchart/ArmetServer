@@ -1,0 +1,243 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'msnodesql', '--save' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 warn package.json armet@1.0.0 No README data
+5 warn package.json util@0.10.3 util is also the name of a node core module.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'msnodesql', null ]
+8 verbose cache add name=undefined spec="msnodesql" args=["msnodesql",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'msnodesql',
+9 verbose parsed url   path: 'msnodesql',
+9 verbose parsed url   href: 'msnodesql' }
+10 silly lockFile 36f1ebb8-msnodesql msnodesql
+11 verbose lock msnodesql /Users/jhrhee/.npm/36f1ebb8-msnodesql.lock
+12 silly lockFile 36f1ebb8-msnodesql msnodesql
+13 silly lockFile 36f1ebb8-msnodesql msnodesql
+14 verbose addNamed [ 'msnodesql', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 0cd57691-msnodesql msnodesql@
+17 verbose lock msnodesql@ /Users/jhrhee/.npm/0cd57691-msnodesql.lock
+18 silly addNameRange { name: 'msnodesql', range: '*', hasData: false }
+19 verbose url raw msnodesql
+20 verbose url resolving [ 'https://registry.npmjs.org/', './msnodesql' ]
+21 verbose url resolved https://registry.npmjs.org/msnodesql
+22 info trying registry request attempt 1 at 16:36:27
+23 http GET https://registry.npmjs.org/msnodesql
+24 http 200 https://registry.npmjs.org/msnodesql
+25 silly registry.get cb [ 200,
+25 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+25 silly registry.get     etag: '"3HQDW5V5R2QP2RXL9ULIAZH4F"',
+25 silly registry.get     'content-type': 'application/json',
+25 silly registry.get     'cache-control': 'max-age=60',
+25 silly registry.get     'content-length': '12952',
+25 silly registry.get     'accept-ranges': 'bytes',
+25 silly registry.get     date: 'Mon, 22 Jun 2015 07:36:27 GMT',
+25 silly registry.get     via: '1.1 varnish',
+25 silly registry.get     age: '0',
+25 silly registry.get     connection: 'keep-alive',
+25 silly registry.get     'x-served-by': 'cache-nrt6129-NRT',
+25 silly registry.get     'x-cache': 'MISS',
+25 silly registry.get     'x-cache-hits': '0',
+25 silly registry.get     'x-timer': 'S1434958587.770159,VS0,VE189',
+25 silly registry.get     vary: 'Accept' } ]
+26 silly addNameRange number 2 { name: 'msnodesql', range: '*', hasData: true }
+27 silly addNameRange versions [ 'msnodesql', [ '0.1.0', '0.2.0', '0.2.1' ] ]
+28 verbose addNamed [ 'msnodesql', '0.2.1' ]
+29 verbose addNamed [ '0.2.1', '0.2.1' ]
+30 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+31 verbose lock msnodesql@0.2.1 /Users/jhrhee/.npm/4e0afecd-msnodesql-0-2-1.lock
+32 silly lockFile 02dc1593-rg-msnodesql-msnodesql-0-2-1-tgz https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz
+33 verbose lock https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz /Users/jhrhee/.npm/02dc1593-rg-msnodesql-msnodesql-0-2-1-tgz.lock
+34 verbose addRemoteTarball [ 'https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz',
+34 verbose addRemoteTarball   '3ce8ade4a8c016a9aa9f942810135a73c0f2c8eb' ]
+35 info retry fetch attempt 1 at 16:36:28
+36 verbose fetch to= /var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz
+37 http GET https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz
+38 http 200 https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz
+39 verbose tar unpack /var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz
+40 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+41 verbose lock tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package /Users/jhrhee/.npm/02760272-88010-0-4063246874138713-package.lock
+42 silly lockFile c8e820e3-88010-0-4063246874138713-tmp-tgz tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz
+43 verbose lock tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz /Users/jhrhee/.npm/c8e820e3-88010-0-4063246874138713-tmp-tgz.lock
+44 silly gunzTarPerm modes [ '755', '644' ]
+45 silly gunzTarPerm extractEntry package.json
+46 silly gunzTarPerm extractEntry .npmignore
+47 silly gunzTarPerm extractEntry README.md
+48 silly gunzTarPerm extractEntry LICENSE
+49 silly gunzTarPerm extractEntry key
+50 silly gunzTarPerm extractEntry lib/sql.js
+51 silly gunzTarPerm extractEntry lib/sqlserver.native.js
+52 silly gunzTarPerm extractEntry binding.gyp
+53 silly gunzTarPerm extractEntry CONTRIBUTORS
+54 silly gunzTarPerm extractEntry CONTRIBUTING.md
+55 silly gunzTarPerm extractEntry scripts/install.js
+56 silly gunzTarPerm extractEntry src/OdbcHandle.h
+57 silly gunzTarPerm extractEntry src/Column.cpp
+58 silly gunzTarPerm extractEntry src/Connection.cpp
+59 silly gunzTarPerm extractEntry src/Connection.h
+60 silly gunzTarPerm extractEntry src/CriticalSection.h
+61 silly gunzTarPerm extractEntry src/OdbcConnection.cpp
+62 silly gunzTarPerm extractEntry src/OdbcConnection.h
+63 silly gunzTarPerm extractEntry src/OdbcConnectionBridge.h
+64 silly gunzTarPerm extractEntry src/OdbcError.cpp
+65 silly gunzTarPerm extractEntry src/OdbcError.h
+66 silly gunzTarPerm extractEntry src/Column.h
+67 silly gunzTarPerm extractEntry src/OdbcOperation.cpp
+68 silly gunzTarPerm extractEntry src/OdbcOperation.h
+69 silly gunzTarPerm extractEntry src/Operation.h
+70 silly gunzTarPerm extractEntry src/ResultSet.cpp
+71 silly gunzTarPerm extractEntry src/ResultSet.h
+72 silly gunzTarPerm extractEntry src/sqlncli.h
+73 silly gunzTarPerm extractEntry src/stdafx.cpp
+74 silly gunzTarPerm extractEntry src/stdafx.h
+75 silly gunzTarPerm extractEntry src/Utility.cpp
+76 silly gunzTarPerm extractEntry src/Utility.h
+77 silly gunzTarPerm extractEntry test/CommonTestFunctions.js
+78 silly gunzTarPerm extractEntry test/connect.js
+79 silly gunzTarPerm extractEntry test/datatypes.js
+80 silly gunzTarPerm extractEntry test/dates.js
+81 silly gunzTarPerm extractEntry test/compoundqueries.js
+82 silly gunzTarPerm extractEntry test/query.js
+83 silly gunzTarPerm extractEntry test/runtests.js
+84 silly gunzTarPerm extractEntry test/test-config.js
+85 silly gunzTarPerm extractEntry test/txn.js
+86 silly gunzTarPerm extractEntry test/params.js
+87 silly gunzTarPerm extractEntry test/testlist.txt
+88 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+89 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+90 silly lockFile c8e820e3-88010-0-4063246874138713-tmp-tgz tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz
+91 silly lockFile c8e820e3-88010-0-4063246874138713-tmp-tgz tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/tmp.tgz
+92 verbose tar pack [ '/Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz',
+92 verbose tar pack   '/var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package' ]
+93 verbose tarball /Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+94 verbose folder /var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+95 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+96 verbose lock tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package /Users/jhrhee/.npm/02760272-88010-0-4063246874138713-package.lock
+97 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+98 verbose lock tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz /Users/jhrhee/.npm/7ecbdc0b--npm-msnodesql-0-2-1-package-tgz.lock
+99 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+100 silly lockFile 02760272-88010-0-4063246874138713-package tar:///var/folders/0l/7xfj_9cx7hv0rt21fw4xk6lm0000gn/T/npm-17703-7momYGvg/1434958588010-0.4063246874138713/package
+101 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+102 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+103 silly lockFile 25b9d2b8-rhee-npm-msnodesql-0-2-1-package /Users/jhrhee/.npm/msnodesql/0.2.1/package
+104 verbose lock /Users/jhrhee/.npm/msnodesql/0.2.1/package /Users/jhrhee/.npm/25b9d2b8-rhee-npm-msnodesql-0-2-1-package.lock
+105 silly lockFile 25b9d2b8-rhee-npm-msnodesql-0-2-1-package /Users/jhrhee/.npm/msnodesql/0.2.1/package
+106 silly lockFile 25b9d2b8-rhee-npm-msnodesql-0-2-1-package /Users/jhrhee/.npm/msnodesql/0.2.1/package
+107 verbose tar unpack /Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+108 silly lockFile 663c3abb-rhee-npm-msnodesql-0-2-1-package tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package
+109 verbose lock tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package /Users/jhrhee/.npm/663c3abb-rhee-npm-msnodesql-0-2-1-package.lock
+110 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+111 verbose lock tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz /Users/jhrhee/.npm/7ecbdc0b--npm-msnodesql-0-2-1-package-tgz.lock
+112 silly gunzTarPerm modes [ '755', '644' ]
+113 silly gunzTarPerm extractEntry package.json
+114 silly gunzTarPerm extractEntry .npmignore
+115 silly gunzTarPerm extractEntry README.md
+116 silly gunzTarPerm extractEntry LICENSE
+117 silly gunzTarPerm extractEntry CONTRIBUTORS
+118 silly gunzTarPerm extractEntry binding.gyp
+119 silly gunzTarPerm extractEntry CONTRIBUTING.md
+120 silly gunzTarPerm extractEntry lib/sql.js
+121 silly gunzTarPerm extractEntry lib/sqlserver.native.js
+122 silly gunzTarPerm extractEntry test/CommonTestFunctions.js
+123 silly gunzTarPerm extractEntry test/connect.js
+124 silly gunzTarPerm extractEntry test/datatypes.js
+125 silly gunzTarPerm extractEntry test/dates.js
+126 silly gunzTarPerm extractEntry test/compoundqueries.js
+127 silly gunzTarPerm extractEntry test/query.js
+128 silly gunzTarPerm extractEntry test/runtests.js
+129 silly gunzTarPerm extractEntry test/test-config.js
+130 silly gunzTarPerm extractEntry test/txn.js
+131 silly gunzTarPerm extractEntry test/params.js
+132 silly gunzTarPerm extractEntry test/testlist.txt
+133 silly gunzTarPerm extractEntry scripts/install.js
+134 silly gunzTarPerm extractEntry src/OdbcHandle.h
+135 silly gunzTarPerm extractEntry src/Column.cpp
+136 silly gunzTarPerm extractEntry src/Connection.cpp
+137 silly gunzTarPerm extractEntry src/Connection.h
+138 silly gunzTarPerm extractEntry src/CriticalSection.h
+139 silly gunzTarPerm extractEntry src/OdbcConnection.cpp
+140 silly gunzTarPerm extractEntry src/OdbcConnection.h
+141 silly gunzTarPerm extractEntry src/OdbcConnectionBridge.h
+142 silly gunzTarPerm extractEntry src/OdbcError.cpp
+143 silly gunzTarPerm extractEntry src/OdbcError.h
+144 silly gunzTarPerm extractEntry src/Column.h
+145 silly gunzTarPerm extractEntry src/OdbcOperation.cpp
+146 silly gunzTarPerm extractEntry src/OdbcOperation.h
+147 silly gunzTarPerm extractEntry src/Operation.h
+148 silly gunzTarPerm extractEntry src/ResultSet.cpp
+149 silly gunzTarPerm extractEntry src/ResultSet.h
+150 silly gunzTarPerm extractEntry src/Utility.cpp
+151 silly gunzTarPerm extractEntry src/Utility.h
+152 silly gunzTarPerm extractEntry src/sqlncli.h
+153 silly gunzTarPerm extractEntry src/stdafx.cpp
+154 silly gunzTarPerm extractEntry src/stdafx.h
+155 silly gunzTarPerm extractEntry key
+156 silly lockFile 663c3abb-rhee-npm-msnodesql-0-2-1-package tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package
+157 silly lockFile 663c3abb-rhee-npm-msnodesql-0-2-1-package tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package
+158 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+159 silly lockFile 7ecbdc0b--npm-msnodesql-0-2-1-package-tgz tar:///Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz
+160 verbose chmod /Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz 644
+161 verbose chown /Users/jhrhee/.npm/msnodesql/0.2.1/package.tgz [ 501, 20 ]
+162 silly lockFile 02dc1593-rg-msnodesql-msnodesql-0-2-1-tgz https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz
+163 silly lockFile 02dc1593-rg-msnodesql-msnodesql-0-2-1-tgz https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz
+164 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+165 silly lockFile 4e0afecd-msnodesql-0-2-1 msnodesql@0.2.1
+166 silly lockFile 0cd57691-msnodesql msnodesql@
+167 silly lockFile 0cd57691-msnodesql msnodesql@
+168 silly resolved [ { name: 'msnodesql',
+168 silly resolved     description: 'Microsoft Driver for Node.js for SQL Server',
+168 silly resolved     author: { name: 'Microsoft Corp.' },
+168 silly resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+168 silly resolved     version: '0.2.1',
+168 silly resolved     keywords:
+168 silly resolved      [ 'sql',
+168 silly resolved        'database',
+168 silly resolved        'mssql',
+168 silly resolved        'azure',
+168 silly resolved        'sqlserver',
+168 silly resolved        'tds',
+168 silly resolved        'microsoft',
+168 silly resolved        'msnodesql',
+168 silly resolved        'node-sqlserver' ],
+168 silly resolved     homepage: 'https://github.com/WindowsAzure/node-sqlserver',
+168 silly resolved     bugs: { url: 'https://github.com/WindowsAzure/node-sqlserver/issues' },
+168 silly resolved     licenses: [ [Object] ],
+168 silly resolved     main: './lib/sql.js',
+168 silly resolved     repository:
+168 silly resolved      { type: 'git',
+168 silly resolved        url: 'git://github.com/WindowsAzure/node-sqlserver.git' },
+168 silly resolved     engines: { node: '>=0.6' },
+168 silly resolved     devDependencies: { mocha: '0.14.x', async: '0.1.x' },
+168 silly resolved     os: [ 'win32' ],
+168 silly resolved     scripts: { install: 'node scripts/install.js' },
+168 silly resolved     readme: '# Microsoft Driver for Node.js for SQL Server\r\n\r\nThe Microsoft Driver for Node.js for SQL Server allows Node.js applications on\r\nMicrosoft Windows and Microsoft Windows Azure to access Microsoft SQL Server \r\nand Microsoft Windows Azure SQL Database.\r\n\r\nThis is an initial preview release, and is not production ready. We welcome any\r\nfeedback, fixes and contributions from the community at this very early stage.\r\n\r\n## Prerequisites\r\n\r\nThe following prerequisites are necessary prior to using the driver:\r\n\r\n* Node.js - use the latest version if possible, but it has been tested on node\r\n0.6.10 and later\r\n\r\n* node-gyp - latest version installed globally (npm install -g node-gyp)\r\n\r\n* python 2.7.x - for node-gyp (make sure it is in the path)\r\n\r\n* Visual C++ 2010 - the Express edition is freely available from \r\n[Microsoft][visualstudio]\r\n\r\n* SQL Server Native Client 11.0 - available as Microsoft SQL Server 2012 \r\nNative Client found in the [SQL Server 2012 Feature Pack][sqlncli]\r\n\r\n## Build\r\n\r\nTo build the driver, first node-gyp must configure the appropriate build files.\r\n\r\n    node-gyp configure\r\n\r\nUse node-gyp to build the driver:\r\n\r\n    node-gyp build\r\n\r\nOr to build the debug version:\r\n\r\n    node-gyp build --debug\r\n\r\nThen copy the sqlserver.node file from the build\\\\(Release|Debug) directory to\r\nthe lib directory.  If you would like to use Visual C++ to debug the driver,\r\nalso copy the sqlserver.pdb file from the same directory.\r\n\r\n## Test\r\n\r\nIncluded are a few unit tests.  They require mocha, async, and assert to be \r\ninstalled via npm.  Also, set the variables in test-config.js, then run the \r\ntests as follows:\r\n\r\n    cd test\r\n    node runtests.js\r\n\r\n## Known Issues\r\n\r\nWe are aware that many features are still not implemented, and are working to\r\nupdate these. Please visit the [project on Github][project] to view \r\noutstanding [issues][issues].\r\n\r\n## Usage\r\n\r\nFor now, please see the unit tests for usage examples.\r\n\r\n## Contribute Code\r\n\r\nIf you would like to become an active contributor to this project please follow the instructions provided in [the Contribution Guidelines][contribute].\r\n\r\n## License\r\n\r\nThe Microsoft Driver for Node.js for SQL Server is licensed under the Apache\r\n2.0 license.  See the LICENSE file for more details.\r\n\r\n[visualstudio]: http://www.microsoft.com/visualstudio/\r\n\r\n[sqlncli]: http://www.microsoft.com/en-us/download/details.aspx?id=29065\r\n\r\n[project]: https://github.com/windowsazure/node-sqlserver\r\n\r\n[issues]: https://github.com/windowsazure/node-sqlserver/issues\r\n\r\n[contribute]: https://github.com/WindowsAzure/node-sqlserver/blob/master/CONTRIBUTING.md\r\n\r\n\r\n\r\n',
+168 silly resolved     readmeFilename: 'README.md',
+168 silly resolved     _id: 'msnodesql@0.2.1',
+168 silly resolved     dist: { shasum: '637461ee9af015d11439558631e747e4ab1bacf2' },
+168 silly resolved     _from: 'msnodesql@',
+168 silly resolved     _resolved: 'https://registry.npmjs.org/msnodesql/-/msnodesql-0.2.1.tgz' } ]
+169 info install msnodesql@0.2.1 into /Users/jhrhee/GitHub/ArmetServer
+170 info installOne msnodesql@0.2.1
+171 error notsup Unsupported
+171 error notsup Not compatible with your operating system or architecture: msnodesql@0.2.1
+171 error notsup Valid OS:    win32
+171 error notsup Valid Arch:  any
+171 error notsup Actual OS:   darwin
+171 error notsup Actual Arch: x64
+172 error System Darwin 14.3.0
+173 error command "node" "/usr/local/bin/npm" "install" "msnodesql" "--save"
+174 error cwd /Users/jhrhee/GitHub/ArmetServer
+175 error node -v v0.10.26
+176 error npm -v 1.4.3
+177 error code EBADPLATFORM
+178 verbose exit [ 1, true ]

@@ -1,6 +1,7 @@
 // 모듈을 추출합니다.
 // var azure = require('azure');
 var azure = require('azure-storage');
+var mssql = require('msnodesql');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var http = require('http');
@@ -9,6 +10,7 @@ var util = require('util');
 var PORT = process.env.PORT || 27372;
 var blobName = "testBlobName";
 var containerName = "test";
+var conn_str = "Driver={SQL Server Native Client 10.0};Server=tcp:gys5qn81ol.database.windows.net,1433;Database=armetDB;Uid=armet;Pwd=Pinkrocket1234;Encrypt=yes;Connection Timeout=30;";
 
 var startDate = new Date();
 var expiryDate = new Date(startDate);
@@ -21,52 +23,52 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(app.router);
 
-var DummyDB = (function () {
-	// 변수를 선언합니다.
-	var DummyDB = {};
-	var storage = [];
-	var count = 1;
+// var DummyDB = (function () {
+// 	// 변수를 선언합니다.
+// 	var DummyDB = {};
+// 	var storage = [];
+// 	var count = 1;
 
-	// 메서드를 구현합니다.
-	DummyDB.get = function (id) {
-		if (id) {
-			//변수를 가공합니다.
-			id = (typeof id == 'string') ? Number(id) : id;
+// 	// 메서드를 구현합니다.
+// 	DummyDB.get = function (id) {
+// 		if (id) {
+// 			//변수를 가공합니다.
+// 			id = (typeof id == 'string') ? Number(id) : id;
 
-			//데이터를 선택합니다.
-			for (var i in storage) if (storage[i].id == id) {
-				return storage[i];
-			}
-		} else {
-			return storage;
-		}
-	};
+// 			//데이터를 선택합니다.
+// 			for (var i in storage) if (storage[i].id == id) {
+// 				return storage[i];
+// 			}
+// 		} else {
+// 			return storage;
+// 		}
+// 	};
 
-	DummyDB.insert = function (data) {
-		data.id = count++;
-		storage.push(data);
-		return data;
-	};
+// 	DummyDB.insert = function (data) {
+// 		data.id = count++;
+// 		storage.push(data);
+// 		return data;
+// 	};
 
-	DummyDB.remove = function (id) {
-		// 변수를 가공합니다.
-		id = (typeof id == 'string') ? Number(id) : id;
+// 	DummyDB.remove = function (id) {
+// 		// 변수를 가공합니다.
+// 		id = (typeof id == 'string') ? Number(id) : id;
 
-		// 제거합니다.
-		for (var i in storage) if (storage[i].id == id) {
-			// 데이터를 제거합니다.
-			storage.splice(i, 1);
+// 		// 제거합니다.
+// 		for (var i in storage) if (storage[i].id == id) {
+// 			// 데이터를 제거합니다.
+// 			storage.splice(i, 1);
 
-			// 리턴합니다; 데이터 삭제 성공
-			return true;
-		}
+// 			// 리턴합니다; 데이터 삭제 성공
+// 			return true;
+// 		}
 
-		return false;
-	};
+// 		return false;
+// 	};
 
-	// 리턴합니다.
-	return DummyDB;
-})();
+// 	// 리턴합니다.
+// 	return DummyDB;
+// })();
 
 var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 var storageAccount = 'armet';
@@ -91,56 +93,84 @@ app.get('/', function(request, response) {
 	response.send("Hello");
 });
 
-app.get('/user', function(request, response) {
-	response.send(DummyDB.get());
-});
+// app.get('/user', function(request, response) {
+// 	response.send(DummyDB.get());
+// });
 
-app.get('/user/:id', function(request, response) {
-	response.send(DummyDB.get(request.param('id')));
-});
+// app.get('/user/:id', function(request, response) {
+// 	response.send(DummyDB.get(request.param('id')));
+// });
 
-app.post('/user', function(request, response) {
-	// 변수를 선언합니다.
-	var name = request.param('name');
-	var region = request.param('region');
+// app.post('/user', function(request, response) {
+// 	// 변수를 선언합니다.
+// 	var name = request.param('name');
+// 	var region = request.param('region');
 
-	// 유효성을 검사합니다.
-	if (name && region) {
-		DummyDB.insert({
-			name: name,
-			region: region
-		});
-		response.send(DummyDB.get());
-	}
-	else {
-		throw new Error('error');
-	}
+// 	// 유효성을 검사합니다.
+// 	if (name && region) {
+// 		DummyDB.insert({
+// 			name: name,
+// 			region: region
+// 		});
+// 		response.send(DummyDB.get());
+// 	}
+// 	else {
+// 		throw new Error('error');
+// 	}
 
-	// response.send("OK Post");
-});
+// 	// response.send("OK Post");
+// });
 
-app.put('/user/:id', function(request, response) {
-	// 변수를 선언합니다.
-	var id = request.param('id');
-	var name = request.param('name');
-	var region = request.param('region');
+// app.put('/user/:id', function(request, response) {
+// 	// 변수를 선언합니다.
+// 	var id = request.param('id');
+// 	var name = request.param('name');
+// 	var region = request.param('region');
 
-	// // 데이터베이스를 수정합니다.
-	var item = DummyDB.get(id);
-	if (!item)
-		response.send('no data');
-	else {
-		item.name = name || item.name;
-		item.region = region || item.region;
+// 	// // 데이터베이스를 수정합니다.
+// 	var item = DummyDB.get(id);
+// 	if (!item)
+// 		response.send('no data');
+// 	else {
+// 		item.name = name || item.name;
+// 		item.region = region || item.region;
 
-		// // 응답합니다.
-		response.send(item);
-	}
-	// response.send('put OK');
-});
+// 		// // 응답합니다.
+// 		response.send(item);
+// 	}
+// 	// response.send('put OK');
+// });
 
-app.del('/user/:id', function(request, response) {
-	response.send(DummyDB.remove(request.param('id')));
+// app.del('/user/:id', function(request, response) {
+// 	response.send(DummyDB.remove(request.param('id')));
+// });
+
+app.get('/table', function (req, res) {
+	var tableService = azure.createTableService(storageAccount, accessKey);
+
+	tableService.createTableIfNotExists('mytable', function(error, result, response){
+	    if(!error){
+	        // Table exists or created
+	    }
+	});
+	// var sharedAccessPolicy = {
+	//   AccessPolicy: {
+	//     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+	//     Start: startDate,
+	//     Expiry: expiryDate
+	//   },
+	// };
+	 
+	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+	// var sasUrl = blobService.getUrl(containerName, blobName, token);
+
+    res.send(
+     	'<form action="/upload" enctype="multipart/form-data" method="post">'+
+      	'<input type="text" name="title"><br>'+
+      	'<input type="file" name="upload"><br>'+
+      	'<input type="submit" value="Upload">'+
+      	'</form>'
+    );
 });
 
 app.get('/upload', function (req, res) {
