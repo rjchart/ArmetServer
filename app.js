@@ -146,7 +146,7 @@ app.get('/', function(request, response) {
 // });
 
 app.get('/table', function (req, res) {
-	var tableService = azure.createTableService(storageAccount, accessKey);
+	// var tableService = azure.createTableService(storageAccount, accessKey);
 
 	// tableService.createTableIfNotExists('mytable', function(error, result, res){
 	//     if(!error){
