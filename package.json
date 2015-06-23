@@ -25,7 +25,6 @@
     "azure-storage": "*",
     "multiparty": "^4.1.2",
     "util": "^0.10.3",
-    "azure": "^0.10.6",
-    “msnodesql”: “*”
+    "azure": "^0.10.6"
   }
 }
