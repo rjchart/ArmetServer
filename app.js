@@ -165,7 +165,7 @@ app.get('/table', function (req, res) {
 	  complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
 	};
 
-	var resultString;
+	var resultString = entity.PartitionKey;
 	tableService.insertEntity('mytable', entity, function(error, result, response) {
 	  if (!error) {
 	  	resultString = result.etag;
