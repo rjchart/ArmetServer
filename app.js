@@ -164,11 +164,14 @@ app.get('/table', function (req, res) {
 	  dateValue: entGen.DateTime(new Date(Date.UTC(2011, 10, 25))),
 	  complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
 	};
+
+	var resultString;
 	tableService.insertEntity('mytable', entity, function(error, result, response) {
 	  if (!error) {
+	  	resultString = result.etag;
 	    // result contains the ETag for the new entity
 	  }
-	  console.log("etag: " + result);
+	  // console.log("etag: " + result);
 	});
 
 	// var sharedAccessPolicy = {
@@ -182,7 +185,7 @@ app.get('/table', function (req, res) {
 	// var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
 	// var sasUrl = blobService.getUrl(containerName, blobName, token);
 
-	res.send("Make Table");
+	res.send("Make Table:" + resultString);
     // res.send(
     //  	'<form action="/upload" enctype="multipart/form-data" method="post">'+
     //   	'<input type="text" name="title"><br>'+
