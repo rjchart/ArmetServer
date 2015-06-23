@@ -153,6 +153,22 @@ app.get('/table', function (req, res) {
 	        // Table exists or created
 	    }
 	});
+	
+	var entGen = azure.TableUtilities.entityGenerator;
+	var entity = {
+	  PartitionKey: entGen.String('part2'),
+	  RowKey: entGen.String('row1'),
+	  boolValueTrue: entGen.Boolean(true),
+	  boolValueFalse: entGen.Boolean(false),
+	  intValue: entGen.Int32(42),
+	  dateValue: entGen.DateTime(new Date(Date.UTC(2011, 10, 25))),
+	  complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
+	};
+	tableService.insertEntity('mytable', entity, function(error, result, response) {
+	  if (!error) {
+	    // result contains the ETag for the new entity
+	  }
+	});
 
 	// var sharedAccessPolicy = {
 	//   AccessPolicy: {
