@@ -1,9 +1,9 @@
 // 모듈을 추출합니다.
 // var azure = require('azure');
 var azure = require('azure-storage');
-// var mssql = require('msnodesql');
 var multiparty = require('multiparty');
 var fs = require('fs');
+var ejs = require('ejs');
 var http = require('http');
 var express = require('express');
 var util = require('util');
@@ -23,74 +23,38 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(app.router);
 
-// var DummyDB = (function () {
-// 	// 변수를 선언합니다.
-// 	var DummyDB = {};
-// 	var storage = [];
-// 	var count = 1;
-
-// 	// 메서드를 구현합니다.
-// 	DummyDB.get = function (id) {
-// 		if (id) {
-// 			//변수를 가공합니다.
-// 			id = (typeof id == 'string') ? Number(id) : id;
-
-// 			//데이터를 선택합니다.
-// 			for (var i in storage) if (storage[i].id == id) {
-// 				return storage[i];
-// 			}
-// 		} else {
-// 			return storage;
-// 		}
-// 	};
-
-// 	DummyDB.insert = function (data) {
-// 		data.id = count++;
-// 		storage.push(data);
-// 		return data;
-// 	};
-
-// 	DummyDB.remove = function (id) {
-// 		// 변수를 가공합니다.
-// 		id = (typeof id == 'string') ? Number(id) : id;
-
-// 		// 제거합니다.
-// 		for (var i in storage) if (storage[i].id == id) {
-// 			// 데이터를 제거합니다.
-// 			storage.splice(i, 1);
-
-// 			// 리턴합니다; 데이터 삭제 성공
-// 			return true;
-// 		}
-
-// 		return false;
-// 	};
-
-// 	// 리턴합니다.
-// 	return DummyDB;
-// })();
-
 var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==';
 var storageAccount = 'armet';
 
 app.get('/', function(request, response) {
-	// if (request.cookies.auth) {
-	// 	response.send('<h1>Login Success</h1>');
-	// }
-	// else {
-	// 	response.redirect('/login');
-	// }
+	var tableService = azure.createTableService(storageAccount, accessKey);
 
-	// fs.readFile('HTMLPage.html', function(error, data) {
-	// 	response.send(data.toString());
-	// });
-	// var output = {};
-	// output.cookies = request.cookies;
-	// output.session = request.session;
+	tableService.createTableIfNotExists('mytable', function(error, result, res){
+	    if(!error){
+	        // Table exists or created
+	    }
+	});
 
-	// request.session.now = (new Date()).toUTCString();
+	fs.readFile('list.html', 'utf8', function (error, data) {
+		var query = new azure.TableQuery()
+		.top(5)
+		.where('PartitionKey eq ?', 'part2');
 
-	response.send("Hello");
+		// 데이터베이스 쿼리를 실행합니다.
+		tableService.queryEntities('mytable', query, null, function (error, results, response) {
+			if (!error) {
+				response.send(ejs.render(data, {
+					data: results
+				}));
+			}
+		});
+		// tableService.queryEntities('SELECT * FROM mytable', function (error, results) {
+		// 	// 응답합니다.
+		// 	response.send(ejs.render(data, {
+		// 		data: results
+		// 	}));
+		// });
+	});
 });
 
 // app.get('/user', function(request, response) {
