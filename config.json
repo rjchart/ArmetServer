@@ -2,5 +2,7 @@
     "STORAGE_NAME": "armet",
     "STORAGE_KEY": "UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==",
     "PARTITION_KEY": "mytasks",
-    "TABLE_NAME": "tasks"
+    "TABLE_NAME": "tasks",
+    "AZURE_STORAGE_ACCOUNT": "armet",
+    "AZURE_STORAGE_ACCESS_KEY": "UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVmf5hDQHzuiA2/N70M++br6QA==",
 }
