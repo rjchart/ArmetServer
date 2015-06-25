@@ -45,7 +45,7 @@ app.get('/', function(request, response) {
 			if (!error) {
 				var testString = JSON.stringify(result.entries);
 				var newTest = JSON.parse(testString);
-				response.send(testString);
+				response.send(JSON.parse(newTest[0].name)._);
 				var users = ['geddy', 'neil', 'alex'];
 				// response.send(ejs.render(data, 
 				// 	{data: result.entries,
