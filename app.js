@@ -44,7 +44,7 @@ app.get('/', function(request, response) {
 		tableService.queryEntities('products', query, null, function (error, results, response) {
 			if (!error) {
 				response.send(ejs.render(data, {
-					data: results
+					data: results.entries
 				}));
 			}
 		});
