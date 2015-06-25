@@ -44,8 +44,8 @@ app.get('/', function(request, response) {
 		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
 			if (!error) {
 				var testString = JSON.stringify(result.entries);
-				response.send(testString);
-				// var newTest = JSON.parse(testString);
+				var newTest = JSON.parse(testString);
+				response.send(newTest[0].name);
 				var users = ['geddy', 'neil', 'alex'];
 				// response.send(ejs.render(data, 
 				// 	{data: result.entries,
