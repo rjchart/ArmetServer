@@ -41,14 +41,14 @@ app.get('/', function(request, response) {
 		.where('PartitionKey eq ?', 'data');
 
 		// 데이터베이스 쿼리를 실행합니다.
-		tableService.queryEntities('products', query, null, function (error, results, res) {
+		tableService.queryEntities('products', query, null, function (error, results, response) {
 			if (!error) {
-				response.send(ejs.render(data));
+				// response.send(ejs.render(data, {test: 'abc'}));
 				// , {
 				// 	data: results.entries
 				// }
-				
-				// response.send(data.toString());
+
+				response.send(data.toString());
 			}
 		});
 
