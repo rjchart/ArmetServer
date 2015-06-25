@@ -44,14 +44,14 @@ app.get('/', function(request, response) {
 		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
 			if (!error) {
 				var testString = JSON.stringify(result.entries);
-				var newTest = JSON.parse(testString);
-				response.send(newTest[0].name._);
+				var entries = JSON.parse(testString);
+				// response.send(newTest[0].name._);
 				var users = ['geddy', 'neil', 'alex'];
-				// response.send(ejs.render(data, 
-				// 	{data: result.entries,
-				// 	 users: users},
-				// 	{delimiter: '?'}
-				// ));
+				response.send(ejs.render(data, 
+					{data: entries,
+					 users: users},
+					{delimiter: '?'}
+				));
 
 				 
 				// // Just one template 
