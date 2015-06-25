@@ -48,8 +48,8 @@ app.get('/', function(request, response) {
 				var users = ['geddy', 'neil', 'alex'];
 				 
 				// Just one template 
-				ejs.render('<?= users.join(" | "); ?>', {users: users}, {delimiter: '?'});
-
+				var get = ejs.render('<?= users.join(" | "); ?>', {users: users}, {delimiter: '?'});
+				response.send(get);
 				// , {
 				// 	data: results.entries
 				// }
