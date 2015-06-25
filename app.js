@@ -46,7 +46,7 @@ app.get('/', function(request, response) {
 
 				var users = ['geddy', 'neil', 'alex'];
 				response.send(ejs.render(data, 
-					{data: result.entries,
+					{data: JSON.parse(result.entries),
 					 users: users},
 					{delimiter: '?'}
 				));
