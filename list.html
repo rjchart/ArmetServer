@@ -16,9 +16,9 @@
 			<th>Model Number</th>
 			<th>Series</th>
 			<th><?= users[0] ?></th>
-			<th><?= JSON.stringify(data[0]).name ?></th>
+			<th><?= JSON.stringify(data[0].name) ?></th>
 		</tr>
-		<% data.forEach(fuction (item, index) { %>
+		<% for(item in data) { %>
 		<tr>
 			<td><a href="/delete/<%= item.id %>">DELETE</a></td>
 			<td><a href="/edit/<%= item.id %>">EDIT</a></td>
