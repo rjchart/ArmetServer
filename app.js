@@ -44,11 +44,17 @@ app.get('/', function(request, response) {
 		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
 			if (!error) {
 				// response.send(ejs.render(data, {test: 'abc'}));
+
+				var users = ['geddy', 'neil', 'alex'];
+				 
+				// Just one template 
+				ejs.render('<?= users.join(" | "); ?>', {users: users}, {delimiter: '?'});
+
 				// , {
 				// 	data: results.entries
 				// }
 
-				response.send(data.toString());
+				// response.send(data.toString());
 			}
 		});
 
