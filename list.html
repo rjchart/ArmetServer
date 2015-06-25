@@ -16,7 +16,7 @@
 			<th>Model Number</th>
 			<th>Series</th>
 		</tr>
-		<% for (item in data) { %>
+		<% data.forEach( function (item, index) { %>
 		<!-- <tr>
 			<td><a href="/delete/<%= item.id._ %>">DELETE</a></td>
 			<td><a href="/edit/<%= item.id._ %>">EDIT</a></td>
@@ -25,7 +25,7 @@
 			<td><%= item.modelnumber._ %></td>
 			<td><%= item.series._ %></td>
 		</tr> -->
-		<% } %>
+		<% }); %>
 	</table>
 </body>
 </html>
