@@ -15,17 +15,15 @@
 			<th>Name</th>
 			<th>Model Number</th>
 			<th>Series</th>
-			<th><?= users[0] ?></th>
-			<th> <?= data[0].name._ ?></th>
 		</tr>
 		<% for(item in data) { %>
 		<tr>
-			<td><a href="/delete/<%= item.id %>">DELETE</a></td>
-			<td><a href="/edit/<%= item.id %>">EDIT</a></td>
-			<td><%= item.id %></td>
-			<td><%= item.name %></td>
-			<td><%= item.modelnumber %></td>
-			<td><%= item.series %></td>
+			<td><a href="/delete/<%= item.id._ %>">DELETE</a></td>
+			<td><a href="/edit/<%= item.id._ %>">EDIT</a></td>
+			<td><%= item.id._ %></td>
+			<td><%= item.name._ %></td>
+			<td><%= item.modelnumber._ %></td>
+			<td><%= item.series._ %></td>
 		</tr>
 		<% }); %>
 	</table>

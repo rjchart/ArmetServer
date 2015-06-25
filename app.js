@@ -50,7 +50,7 @@ app.get('/', function(request, response) {
 				response.send(ejs.render(data, 
 					{data: entries,
 					 users: users},
-					{delimiter: '?'}
+					{delimiter: '%'}
 				));
 
 				 
