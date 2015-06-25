@@ -49,7 +49,7 @@ app.get('/', function(request, response) {
 		// 	}
 		// });
 
-		response.send("Hello");
+		response.send(data.toString());
 	});
 	// response.send("Hello");
 });
