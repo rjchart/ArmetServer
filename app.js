@@ -35,21 +35,21 @@ app.get('/', function(request, response) {
 	    }
 	});
 
-	// fs.readFile('list.html', 'utf8', function (error, data) {
-	// 	var query = new azure.TableQuery()
-	// 	.top(5)
-	// 	.where('PartitionKey eq ?', 'part2');
+	fs.readFile('list.html', 'utf8', function (error, data) {
+		var query = new azure.TableQuery()
+		.top(5)
+		.where('PartitionKey eq ?', 'data');
 
-	// 	// 데이터베이스 쿼리를 실행합니다.
-	// 	tableService.queryEntities('products', query, null, function (error, results, response) {
-	// 		if (!error) {
-	// 			response.send(ejs.render(data, {
-	// 				data: results
-	// 			}));
-	// 		}
-	// 	});
-	// });
-	response.send("Hello");
+		// 데이터베이스 쿼리를 실행합니다.
+		tableService.queryEntities('products', query, null, function (error, results, response) {
+			if (!error) {
+				response.send(ejs.render(data, {
+					data: results
+				}));
+			}
+		});
+	});
+	// response.send("Hello");
 });
 
 // app.get('/user', function(request, response) {
