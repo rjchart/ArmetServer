@@ -27,13 +27,13 @@ var accessKey = 'UzC27GHWe/VjM/yq4jssToMfry6QsjOx4ngE8RANRXLXd9j9tuIO2yIm4puYwVm
 var storageAccount = 'armet';
 
 app.get('/', function(request, response) {
-	// var tableService = azure.createTableService(storageAccount, accessKey);
+	var tableService = azure.createTableService(storageAccount, accessKey);
 
-	// tableService.createTableIfNotExists('mytable', function(error, result, res){
-	//     if(!error){
-	//         // Table exists or created
-	//     }
-	// });
+	tableService.createTableIfNotExists('products', function(error, result, res){
+	    if(!error){
+	        // Table exists or created
+	    }
+	});
 
 	// fs.readFile('list.html', 'utf8', function (error, data) {
 	// 	var query = new azure.TableQuery()
@@ -41,7 +41,7 @@ app.get('/', function(request, response) {
 	// 	.where('PartitionKey eq ?', 'part2');
 
 	// 	// 데이터베이스 쿼리를 실행합니다.
-	// 	tableService.queryEntities('mytable', query, null, function (error, results, response) {
+	// 	tableService.queryEntities('products', query, null, function (error, results, response) {
 	// 		if (!error) {
 	// 			response.send(ejs.render(data, {
 	// 				data: results
