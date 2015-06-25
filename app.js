@@ -29,7 +29,7 @@ var storageAccount = 'armet';
 app.get('/', function(request, response) {
 	var tableService = azure.createTableService(storageAccount, accessKey);
 
-	tableService.createTableIfNotExists('products', function(error, result, res){
+	tableService.createTableIfNotExists('mytable', function(error, result, res){
 	    if(!error){
 	        // Table exists or created
 	    }
@@ -38,10 +38,10 @@ app.get('/', function(request, response) {
 	fs.readFile('list.html', 'utf8', function (error, data) {
 		var query = new azure.TableQuery()
 		// .top(5)
-		.where('PartitionKey eq ?', 'data');
+		.where('PartitionKey eq ?', 'part2');
 
 		// 데이터베이스 쿼리를 실행합니다.
-		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
+		tableService.queryEntities('mytable', query, null, function entitiesQueried(error, result) {
 			if (!error) {
 
 				var users = ['geddy', 'neil', 'alex'];
