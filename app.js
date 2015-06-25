@@ -37,7 +37,7 @@ app.get('/', function(request, response) {
 
 	fs.readFile('list.html', 'utf8', function (error, data) {
 		var query = new azure.TableQuery()
-		.top(5)
+		// .top(5)
 		.where('PartitionKey eq ?', 'data');
 
 		// 데이터베이스 쿼리를 실행합니다.
