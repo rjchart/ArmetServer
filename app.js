@@ -43,16 +43,18 @@ app.get('/', function(request, response) {
 		// 데이터베이스 쿼리를 실행합니다.
 		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
 			if (!error) {
-				// response.send(ejs.render(data, {test: 'abc'}));
 
 				var users = ['geddy', 'neil', 'alex'];
+				response.send(ejs.render(data, 
+					// data: results.entries
+					{users: users},
+					{delimiter: '?'}
+				));
+
 				 
-				// Just one template 
-				var ejsString = ejs.render('<?= users.join(" | "); ?>', {users: users}, {delimiter: '?'});
-				response.send("ajs done");
-				// , {
-				// 	data: results.entries
-				// }
+				// // Just one template 
+				// var ejsString = ejs.render('<?= users.join(" | "); ?>', {users: users}, {delimiter: '?'});
+				// response.send("ajs done");
 
 				// response.send(data.toString());
 			}
