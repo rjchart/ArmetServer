@@ -48,7 +48,7 @@ app.get('/', function(request, response) {
 				response.send(ejs.render(data, 
 					// data: results.entries
 					{data: result.entities},
-					{delimiter: '?'}
+					{delimiter: '%'}
 				));
 
 				 
