@@ -16,7 +16,7 @@
 			<th>Model Number</th>
 			<th>Series</th>
 			<th><?= users[0] ?></th>
-			<th> <?=JSON.parse('<?= JSON.stringify(data[0].name) ?>')?></th>
+			<th> <?=JSON.parse( JSON.stringify(data[0].name)); ?></th>
 		</tr>
 		<% for(item in data) { %>
 		<tr>
