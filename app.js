@@ -43,13 +43,15 @@ app.get('/', function(request, response) {
 		// 데이터베이스 쿼리를 실행합니다.
 		tableService.queryEntities('products', query, null, function entitiesQueried(error, result) {
 			if (!error) {
-
+				var testString = JSON.stringify(result.entries);
+				response.send(testString);
+				// var newTest = JSON.parse(testString);
 				var users = ['geddy', 'neil', 'alex'];
-				response.send(ejs.render(data, 
-					{data: result.entries,
-					 users: users},
-					{delimiter: '?'}
-				));
+				// response.send(ejs.render(data, 
+				// 	{data: result.entries,
+				// 	 users: users},
+				// 	{delimiter: '?'}
+				// ));
 
 				 
 				// // Just one template 
