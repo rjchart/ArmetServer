@@ -43,9 +43,11 @@ app.get('/', function(request, response) {
 		// 데이터베이스 쿼리를 실행합니다.
 		tableService.queryEntities('products', query, null, function (error, results, res) {
 			if (!error) {
-				response.send(ejs.render(data, {
-					data: results.entries
-				}));
+				response.send(ejs.render(data));
+				// , {
+				// 	data: results.entries
+				// }
+				
 				// response.send(data.toString());
 			}
 		});
