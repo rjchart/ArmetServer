@@ -99,6 +99,29 @@ app.get('/insert', function (request, response) {
 		response.send(data);
 	});
 });
+
+app.post('/insert', function (request, response) {
+	// 변수를 선언합니다.
+	var body = request.body;
+	var tableService = azure.createTableService(storageAccount, accessKey);
+
+	var entGen = azure.TableUtilities.entityGenerator;
+	var entity = {
+		PartitionKey: entGen.String('data'),
+		RowKey: entGen.String('row1'),
+		name: entGen.String(body.name),
+		modelnumber: entGen.String(body.modelnumber),
+		series: entGen.String(body.series)
+	};
+
+	// 데이터베이스에 entity를 추가합니다.
+	tableService.insertEntity('products', entity, function(error, result, res) {
+		if (!error) {
+			response.redirect('/');
+		}
+	});
+});
+
 // app.get('/user', function(request, response) {
 // 	response.send(DummyDB.get());
 // });
