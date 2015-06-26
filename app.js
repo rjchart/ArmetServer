@@ -109,7 +109,7 @@ app.post('/insert', function (request, response) {
 	var entity = {
 		PartitionKey: entGen.String(body.PartitionKey),
 		RowKey: entGen.String(body.RowKey),
-		id: entGen.Int32(4),
+		id: entGen.Int32(body.id),
 		name: entGen.String(body.name),
 		modelnumber: entGen.String(body.modelnumber),
 		series: entGen.String(body.series)
@@ -145,6 +145,29 @@ app.get('/edit/:id', function (request, response) {
 				));
 			}
 		});
+	});
+});
+
+app.post('/edit/:id', function (request, response) {
+	// 변수를 선언합니다.
+	var body = request.body;
+	var tableService = azure.createTableService(storageAccount, accessKey);
+
+	var entGen = azure.TableUtilities.entityGenerator;
+	var entity = {
+		PartitionKey: entGen.String(body.PartitionKey),
+		RowKey: entGen.String(body.RowKey),
+		id: entGen.Int32(body.id),
+		name: entGen.String(body.name),
+		modelnumber: entGen.String(body.modelnumber),
+		series: entGen.String(body.series)
+	};
+
+	// 데이터베이스에 entity를 추가합니다.
+	tableService.updateEntity('products', entity, function(error, result, res) {
+		if (!error) {
+			response.redirect('/');
+		}
 	});
 });
 
