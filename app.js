@@ -66,6 +66,31 @@ app.get('/', function(request, response) {
 	// response.send("Hello");
 });
 
+app.get('/delete/:id', function(request, response) {
+	// 데이터베이스 쿼리를 실행합니다.
+	var tableService = azure.createTableService(storageAccount, accessKey);
+
+	tableService.createTableIfNotExists('products', function(error, result, res){
+	    if(!error){
+	        // Table exists or created
+	    }
+	});
+
+	var id = request.param('id');
+
+	var task = { 
+	  PartitionKey: {'_':'data'},
+	  RowKey: {'_': id}
+	};
+
+	tableService.deleteEntity('products', task, function(error, res){
+		if(!error) {
+		// Entity deleted
+			response.redirect('/');
+		}
+	});
+
+});
 // app.get('/user', function(request, response) {
 // 	response.send(DummyDB.get());
 // });
@@ -118,31 +143,6 @@ app.get('/', function(request, response) {
 // 	response.send(DummyDB.remove(request.param('id')));
 // });
 
-app.get('/delete/:id', function(request, response) {
-	// 데이터베이스 쿼리를 실행합니다.
-	var tableService = azure.createTableService(storageAccount, accessKey);
-
-	tableService.createTableIfNotExists('products', function(error, result, res){
-	    if(!error){
-	        // Table exists or created
-	    }
-	});
-
-	var id = request.param('id');
-
-	var task = { 
-	  PartitionKey: {'_':'data'},
-	  RowKey: {'_': id}
-	};
-
-	tableSvc.deleteEntity('products', task, function(error, res){
-		if(!error) {
-		// Entity deleted
-			response.redirect('/');
-		}
-	});
-
-});
 
 app.get('/table', function (req, res) {
 	var tableService = azure.createTableService(storageAccount, accessKey);
