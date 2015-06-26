@@ -107,8 +107,9 @@ app.post('/insert', function (request, response) {
 
 	var entGen = azure.TableUtilities.entityGenerator;
 	var entity = {
-		PartitionKey: entGen.String('data'),
-		RowKey: entGen.String('row1'),
+		PartitionKey: entGen.String(body.PartitionKey),
+		RowKey: entGen.String(body.RowKey),
+		id: entGen.Int32(4),
 		name: entGen.String(body.name),
 		modelnumber: entGen.String(body.modelnumber),
 		series: entGen.String(body.series)
